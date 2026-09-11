@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jinheng's Site — Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">JH.log</a>
+      <button id="nav-toggle" class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+      <nav class="site-nav" id="site-nav">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 전환">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>안녕하세요, 웹을 공부하는 중입니다 👋</h1>
+      <p>이 페이지는 HTML → CSS → JavaScript 순서로 한 단계씩 직접 쌓아 올린 실습 사이트입니다.</p>
+      <a href="about.html" class="button">더 알아보기</a>
+    </section>
+
+    <section class="highlights">
+      <h2>이 사이트에서 연습한 것</h2>
+      <ul class="card-grid">
+        <li class="card">
+          <h3>HTML</h3>
+          <p>시맨틱 태그로 문서 구조 잡기</p>
+        </li>
+        <li class="card">
+          <h3>CSS</h3>
+          <p>Flexbox·Grid로 레이아웃, 다크모드</p>
+        </li>
+        <li class="card">
+          <h3>JavaScript</h3>
+          <p>DOM 이벤트, fetch, 모듈(ESM)</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>&copy; 2026 Jinheng. 연습용 페이지입니다.</p></div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
