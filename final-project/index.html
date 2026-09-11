@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyFinal — 나의 한 페이지 사이트</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo">MyPage</a>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#todo">Todo</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 전환">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero container">
+      <h1>안녕하세요, 웹을 공부하고 있는 사람입니다 🚀</h1>
+      <p>HTML · CSS · JavaScript만으로(프레임워크 없이) 만든 한 페이지짜리 사이트입니다.</p>
+      <a href="#projects" class="button">프로젝트 보기</a>
+    </section>
+
+    <section id="about" class="container section">
+      <h2>About</h2>
+      <p>study0 ~ study6 과정을 거치며 배운 시맨틱 태그, Flexbox/Grid, 다크모드, DOM 이벤트, localStorage, ESM 모듈을 이 페이지 하나에 모았습니다.</p>
+    </section>
+
+    <section id="projects" class="container section">
+      <h2>Projects</h2>
+      <ul class="card-grid">
+        <li class="card">
+          <h3>실습 사이트</h3>
+          <p>index / about / contact 3페이지로 만든 연습용 사이트 (practice/site)</p>
+        </li>
+        <li class="card">
+          <h3>할 일 관리 위젯</h3>
+          <p>바로 아래 #todo 섹션에서 동작을 확인하세요</p>
+        </li>
+        <li class="card">
+          <h3>다음 목표</h3>
+          <p>Vue / React로 같은 화면 다시 만들어보기</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="todo" class="container section">
+      <h2>오늘의 할 일</h2>
+      <form id="todo-form" class="todo-form">
+        <input type="text" id="todo-input" placeholder="할 일을 입력하세요" required>
+        <button type="submit" class="button">추가</button>
+      </form>
+      <ul id="todo-list" class="todo-list"></ul>
+      <p class="todo-empty" id="todo-empty">할 일이 없습니다. 위에서 추가해보세요.</p>
+    </section>
+
+    <section id="contact" class="container section">
+      <h2>Contact</h2>
+      <form id="contact-form" novalidate>
+        <div class="form-field">
+          <label for="name">이름</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">이메일</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <button type="submit" class="button">보내기</button>
+        <p id="form-message" class="form-message" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>&copy; 2026 Jinheng. Vanilla JS로 만든 연습 프로젝트입니다.</p></div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
