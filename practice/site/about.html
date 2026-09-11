@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jinheng's Site — About</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">JH.log</a>
+      <button id="nav-toggle" class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+      <nav class="site-nav" id="site-nav">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 전환">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h1>About</h1>
+      <p>저는 HTML부터 차근차근 웹을 공부하고 있습니다. 아래 "관심 기술" 목록은 <code>data/skills.json</code> 파일을 JavaScript의 <code>fetch</code>로 불러와서 그립니다.</p>
+    </section>
+
+    <section>
+      <h2>관심 기술</h2>
+      <ul class="skills-list" id="skills-list">
+        <li>불러오는 중...</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>&copy; 2026 Jinheng. 연습용 페이지입니다.</p></div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

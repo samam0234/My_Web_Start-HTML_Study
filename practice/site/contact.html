@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jinheng's Site — Contact</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">JH.log</a>
+      <button id="nav-toggle" class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+      <nav class="site-nav" id="site-nav">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 전환">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Contact</h1>
+    <p>아래 폼은 실제로 전송되지 않고, JavaScript로 빈 칸만 검사합니다.</p>
+
+    <form id="contact-form" novalidate>
+      <div class="form-field">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-field">
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-field">
+        <label for="message">메시지</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="button">보내기</button>
+      <p id="form-message" class="form-message" role="status"></p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>&copy; 2026 Jinheng. 연습용 페이지입니다.</p></div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
