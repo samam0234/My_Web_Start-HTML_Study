@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello Web</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>나의 첫 웹 페이지</h1><nav aria-label="주 메뉴"><a href="/practice/site/about.html">소개</a></nav></header>
+  <main>
+    <section aria-labelledby="hello"><h2 id="hello">Hello World</h2><p id="greeting"></p></section>
+    <figure><img src="avatar.svg" width="80" height="80" alt="파란 원 안에 JS라고 적힌 학습 로고"><figcaption>학습 로고</figcaption></figure>
+    <table><caption>기술별 역할</caption><thead><tr><th scope="col">기술</th><th scope="col">역할</th></tr></thead><tbody><tr><th scope="row">HTML</th><td>구조</td></tr><tr><th scope="row">CSS</th><td>표현</td></tr><tr><th scope="row">JS</th><td>동작</td></tr></tbody></table>
+    <form id="hello-form"><label for="name">이름</label><input id="name" name="name" required><button>인사</button></form>
+  </main>
+  <footer>HTML · CSS · JavaScript</footer>
+  <script type="module" src="hello.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+:root { --accent: #2353bc; } /* 디자인 값을 한곳에 둔다. */
+* { box-sizing: border-box; } /* width에 padding과 border를 포함한다. */
+body { max-width: 50rem; padding: 1rem; margin: auto; font: 1rem/1.6 system-ui; }
+header { display: flex; align-items: center; justify-content: space-between; } /* 한 줄 배치다. */
+main { display: grid; gap: 1rem; } /* 행과 열을 제어하는 격자다. */
+th, td { border: 1px solid #888; padding: .5rem; }
+button { color: white; background: var(--accent); padding: .5rem; }
+@media (max-width: 640px) { header { display: block; } } /* 좁은 화면에서는 세로로 배치한다. */

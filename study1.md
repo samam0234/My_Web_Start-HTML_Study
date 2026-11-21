@@ -1,157 +1,193 @@
-# Study 1. HTML 기초
+# study1 · HTML·CSS·JavaScript — Hello World와 기본 문법
 
-> 목표: 프레임워크 없이 HTML만으로 페이지 구조를 직접 쓸 수 있게 된다. 이 문서는 이론 중심이고, 실제로 손으로 치는 실습은 [study2.md](study2.md)부터 시작한다.
+## ① 목표 한 줄
 
-## 1.1 HTML 문서의 기본 골격
+시맨틱 HTML과 CSS로 첫 화면을 만들고 JavaScript 함수로 인사를 바꾼다.
+
+## ② 📖 이론
+
+HTML 요소는 여는 태그·속성·내용·닫는 태그로 구성된다. header/nav/main/section/footer는 문서의 의미를 나타내므로 검색 엔진과 보조기술이 구조를 읽을 수 있다. 제목은 h1부터 계층을 지키고, 이미지에는 의미 있는 alt, 폼에는 for/id가 맞는 label을 둔다. 표는 caption과 th의 scope로 행·열 관계를 전달한다.
+
+CSS는 선택자로 요소를 골라 속성을 적용한다. 클래스는 역할을 기준으로 이름 짓고 id는 문서에서 유일하게 쓴다. 박스는 content·padding·border·margin으로 구성된다. border-box는 폭 계산에 padding과 border를 포함한다. 한 줄 배치는 flex, 행·열 배치는 grid를 사용한다. viewport와 640px 미디어쿼리로 좁은 화면에서 배치를 바꾼다.
+
+const는 재할당하지 않는 변수이고 let은 재할당 가능한 변수다. 문자열·숫자·불리언·null과 배열·객체를 구분한다. 배열은 순서가 있는 서랍, 객체는 이름표가 있는 서랍장이다. 함수는 입력을 결과로 바꾼다. `${name}`은 JS 템플릿 리터럴이며 HTML 자체가 이 표현을 자동 평가하지 않는다.
+
+DOM을 찾아 textContent에 결과를 넣으면 화면이 바뀐다. 모듈 스크립트는 import를 쓸 수 있고 문서 파싱 이후 실행된다. 브라우저 DevTools는 원본 파일과 실제 DOM을 함께 비교하는 관찰 도구다.
+
+### 비유로 이해하기
+
+HTML 태그는 문서의 뼈대, CSS 선택자는 꾸밀 대상을 가리키는 이름표, 함수는 입력을 결과로 바꾸는 작은 기계다.
+
+## ③ 🛠️ 실기: 전체 코드와 줄별 설명
+
+1. npm run dev 후 /lessons/study1/을 연다.
+2. 이름을 입력하고 인사 버튼을 누른다.
+3. Elements에서 h1·label·표 헤더를 확인하고 Console에서 skills 같은 모듈 내부 변수는 전역이 아님을 확인한다.
+4. Live Server로 이 정적 폴더를 별도로 열어 파일 저장 후 자동 새로고침을 본다. Node 개발 서버에서는 직접 새로고침한다.
+
+### `lessons/study1/index.html` 전체 코드
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>페이지 제목</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello Web</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 화면에 보이는 내용 -->
+  <header><h1>나의 첫 웹 페이지</h1><nav aria-label="주 메뉴"><a href="/practice/site/about.html">소개</a></nav></header>
+  <main>
+    <section aria-labelledby="hello"><h2 id="hello">Hello World</h2><p id="greeting"></p></section>
+    <figure><img src="avatar.svg" width="80" height="80" alt="파란 원 안에 JS라고 적힌 학습 로고"><figcaption>학습 로고</figcaption></figure>
+    <table><caption>기술별 역할</caption><thead><tr><th scope="col">기술</th><th scope="col">역할</th></tr></thead><tbody><tr><th scope="row">HTML</th><td>구조</td></tr><tr><th scope="row">CSS</th><td>표현</td></tr><tr><th scope="row">JS</th><td>동작</td></tr></tbody></table>
+    <form id="hello-form"><label for="name">이름</label><input id="name" name="name" required><button>인사</button></form>
+  </main>
+  <footer>HTML · CSS · JavaScript</footer>
+  <script type="module" src="hello.js"></script>
 </body>
 </html>
 ```
 
-- `<!DOCTYPE html>`: "이 문서는 최신 HTML(HTML5) 문서다"라고 브라우저에게 알려줌. 항상 맨 위에 한 번만.
-- `<html lang="ko">`: 문서 전체를 감싸는 태그. `lang`은 문서의 언어(검색엔진·스크린리더가 참고).
-- `<head>`: 화면에 직접 보이지 않는 메타 정보 모음.
-  - `<meta charset="UTF-8">`: 문자 인코딩. 한글이 깨지지 않게 하는 필수 설정.
-  - `<meta name="viewport" ...>`: 모바일 화면 크기에 맞춰 레이아웃을 잡아줌 (반응형의 전제 조건).
-  - `<title>`: 브라우저 탭에 표시되는 제목.
-- `<body>`: 실제로 화면에 보이는 모든 내용이 들어가는 곳.
+원본: [lessons/study1/index.html](lessons/study1/index.html) · SHA-256(LF 정규화): `8cd7d0fa19edae8953ac8b6bac9bc3c1cddb6870dcdf95a5d53e09202c567715`
 
-## 1.2 태그 / 요소 / 속성
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
 
-- **태그(tag)**: `<p>`, `<img>` 처럼 꺾쇠로 감싼 표시.
-- **요소(element)**: 여는 태그 + 내용 + 닫는 태그 전체. 예: `<p>안녕</p>`.
-- **속성(attribute)**: 태그 안에 `이름="값"` 형태로 추가 정보를 주는 것. 예: `<a href="about.html">`의 `href`.
-- `<img>`, `<input>`, `<br>`처럼 닫는 태그가 없는 "빈 요소(void element)"도 있다.
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보를 정의한다. |
+| 4 | 문자 인코딩·화면 배율·설명를 정의한다. |
+| 5 | 문자 인코딩·화면 배율·설명를 정의한다. |
+| 6 | 브라우저 탭 제목를 정의한다. |
+| 7 | 공통 CSS 연결를 정의한다. |
+| 8 | 현재 HTML 요소를 닫는다. |
+| 9 | body 요소를 정의한다. |
+| 10 | 머리말 / 최상위 제목 / 탐색 링크 / URL·해시 이동를 정의한다. |
+| 11 | 본문를 정의한다. |
+| 12 | 주제 구역 / 구역 제목 / 설명·상태 메시지를 정의한다. |
+| 13 | figure 요소 / 대체 텍스트를 가진 이미지 / figcaption 요소를 정의한다. |
+| 14 | 행·열 자료 / caption 요소 / thead 요소 / tr 요소 / th 요소 / tbody 요소 / td 요소를 정의한다. |
+| 15 | 입력 제출 단위 / 입력의 접근 가능한 이름 / 사용자 입력 / 키보드 가능한 동작를 정의한다. |
+| 16 | 현재 HTML 요소를 닫는다. |
+| 17 | footer 요소를 정의한다. |
+| 18 | ESM 진입점 연결를 정의한다. |
+| 19 | 현재 HTML 요소를 닫는다. |
+| 20 | 현재 HTML 요소를 닫는다. |
 
-## 1.3 텍스트 관련 태그
 
-```html
-<h1>가장 중요한 제목</h1>
-<h2>다음 수준 제목</h2>
-<!-- h1~h6, 숫자가 클수록 덜 중요한 제목. 순서를 건너뛰지 않는 게 좋다 -->
+### `lessons/study1/style.css` 전체 코드
 
-<p>단락 하나. 문단을 나눌 때 사용한다.</p>
-
-<p>이 단어는 <strong>중요</strong>하고, 이 단어는 <em>강조</em>한다.</p>
-
-<hr> <!-- 구분선 -->
-<br> <!-- 줄바꿈 (문단 안에서만 최소한으로 사용) -->
+```css
+:root { --accent: #2353bc; } /* 디자인 값을 한곳에 둔다. */
+* { box-sizing: border-box; } /* width에 padding과 border를 포함한다. */
+body { max-width: 50rem; padding: 1rem; margin: auto; font: 1rem/1.6 system-ui; }
+header { display: flex; align-items: center; justify-content: space-between; } /* 한 줄 배치다. */
+main { display: grid; gap: 1rem; } /* 행과 열을 제어하는 격자다. */
+th, td { border: 1px solid #888; padding: .5rem; }
+button { color: white; background: var(--accent); padding: .5rem; }
+@media (max-width: 640px) { header { display: block; } } /* 좁은 화면에서는 세로로 배치한다. */
 ```
 
-`<strong>`/`<em>`은 단순히 굵게/기울임 "모양"이 아니라 "의미상 중요/강조"를 뜻한다. 모양만 바꾸고 싶다면 CSS를 쓰는 게 맞다(study4).
+원본: [lessons/study1/style.css](lessons/study1/style.css) · SHA-256(LF 정규화): `390f1e4ba23955cd834e1c1f2a82b40719296562a52bac475410552b395e90df`
 
-## 1.4 목록
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
 
-```html
-<ul> <!-- 순서 없는 목록 -->
-  <li>HTML</li>
-  <li>CSS</li>
-</ul>
+| 줄 | 설명 |
+|---|---|
+| 1 | CSS 사용자 속성 규칙을 이 선택자에 적용한다. |
+| 2 | 박스 폭 계산·내부 여백·폭 제한 규칙을 이 선택자에 적용한다. |
+| 3 | 내부 여백·외부 여백·폭 제한·글자 표현 규칙을 이 선택자에 적용한다. |
+| 4 | 한 축 배치 규칙을 이 선택자에 적용한다. |
+| 5 | 격자 배치 규칙을 이 선택자에 적용한다. |
+| 6 | 내부 여백 규칙을 이 선택자에 적용한다. |
+| 7 | CSS 사용자 속성·색상·테마·내부 여백 규칙을 이 선택자에 적용한다. |
+| 8 | 화면/사용자 환경별 조건·폭 제한 규칙을 이 선택자에 적용한다. |
 
-<ol> <!-- 순서 있는 목록 -->
-  <li>구조 먼저</li>
-  <li>그 다음 표현</li>
-</ol>
+
+### `lessons/study1/hello.js` 전체 코드
+
+```javascript
+const skills = ['HTML', 'CSS', 'JavaScript']; // 배열은 순서 있는 목록이다.
+const learner = { name: '학습자', count: skills.length }; // 객체는 이름 있는 값을 묶는다.
+function greet(name) { return `${name}님, ${learner.count}가지 기술을 배웁니다.`; } // 템플릿 리터럴이다.
+const output = document.getElementById('greeting'); // HTML 요소를 DOM 객체로 찾는다.
+output.textContent = greet(learner.name); // 문자열을 안전하게 화면에 표시한다.
+document.getElementById('hello-form').addEventListener('submit', event => {
+  event.preventDefault(); // 기본 폼 탐색을 막는다.
+  const name = new FormData(event.currentTarget).get('name').trim(); // 이름으로 입력값을 읽는다.
+  output.textContent = greet(name); // 함수 결과를 다시 화면에 반영한다.
+});
 ```
 
-## 1.5 링크와 이미지
+원본: [lessons/study1/hello.js](lessons/study1/hello.js) · SHA-256(LF 정규화): `610b62cba20708ab8b77dee4d38fd29a81a474766eeab1af408324b230e54e16`
 
-```html
-<a href="about.html">소개 페이지로</a>
-<a href="https://example.com" target="_blank" rel="noopener">외부 링크 (새 탭)</a>
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
 
-<img src="logo.png" alt="회사 로고">
+| 줄 | 설명 |
+|---|---|
+| 1 | 배열은 순서 있는 목록이다. |
+| 2 | 객체는 이름 있는 값을 묶는다. |
+| 3 | 템플릿 리터럴이다. |
+| 4 | `output`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 5 | 문자열을 안전하게 화면에 표시한다. |
+| 6 | 사용자/연결 이벤트가 발생할 때 실행할 콜백을 등록한다. |
+| 7 | 기본 폼 탐색을 막는다. |
+| 8 | 이름으로 입력값을 읽는다. |
+| 9 | 함수 결과를 다시 화면에 반영한다. |
+| 10 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+
+
+### `lessons/study1/avatar.svg` 전체 코드
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="38" fill="#2353bc"/><text x="40" y="49" text-anchor="middle" font-size="26" fill="white">JS</text></svg>
 ```
 
-- `href`: 이동할 주소. 같은 폴더 안의 파일이면 `about.html`처럼 **상대 경로**로 쓰면 된다.
-- `target="_blank"`: 새 탭에서 열기. 보안상 `rel="noopener"`를 함께 쓰는 것이 권장된다.
-- `alt`: 이미지가 안 보일 때(로딩 실패, 스크린리더 사용자) 대신 읽히는 설명 텍스트. **접근성의 기본**이며, 장식용이 아닌 이미지엔 꼭 넣어야 한다.
+원본: [lessons/study1/avatar.svg](lessons/study1/avatar.svg) · SHA-256(LF 정규화): `b14eec72da292d3a569c8ec9dfbac015d9f366d49a6d6623082efcee865b4c09`
 
-## 1.6 표(Table)
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
 
-```html
-<table>
-  <thead>
-    <tr><th>이름</th><th>역할</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>HTML</td><td>구조</td></tr>
-    <tr><td>CSS</td><td>표현</td></tr>
-  </tbody>
-</table>
-```
+| 줄 | 설명 |
+|---|---|
+| 1 | svg 요소 / circle 요소 / text 요소를 정의한다. |
 
-표는 "표 형태의 데이터"에만 쓴다. 레이아웃(화면 배치)을 잡으려고 table을 쓰는 것은 옛날 방식이며, 지금은 CSS의 flex/grid를 쓴다(study4).
 
-## 1.7 시맨틱 태그 — 왜 `<div>`만 쓰면 안 되는가
+## ④ 🔗 연동 포인트
 
-`<div>`는 아무 의미 없는 "그냥 상자"다. 대신 역할을 알려주는 태그를 쓰면:
+첫 HTML → DOM 선택 → 함수 결과 출력으로 연결한다. 다음 단계에서는 함수 하나를 별도 파일로 옮겨 다른 화면에서도 호출한다.
 
-```html
-<header>상단 영역 (로고, 내비게이션)</header>
-<nav>메뉴 링크 모음</nav>
-<main>이 페이지의 핵심 내용 (문서당 보통 1개)</main>
-<section>주제별로 묶은 구역</section>
-<article>독립적으로 의미 있는 콘텐츠 (글 1개 등)</article>
-<aside>본문과 별개인 부가 정보</aside>
-<footer>하단 영역 (저작권, 연락처)</footer>
-```
+## ⑤ 오류 노트
 
-- 검색엔진이 문서 구조를 더 잘 이해한다 (SEO).
-- 스크린리더 사용자가 "내비게이션으로 건너뛰기" 같은 탐색을 할 수 있다 (접근성).
-- 코드를 읽는 사람(미래의 나 포함)이 구조를 바로 파악한다.
+| 증상 | 원인 | 해결 |
+|---|---|---|
+| ${name}이 그대로 보임 | HTML에 JS 표현을 직접 씀 | JS 템플릿 리터럴 결과를 textContent에 넣기 |
+| 스타일이 적용 안 됨 | link 상대경로가 틀림 | Network에서 style.css 200 확인 |
+| 폼 제출 시 새로고침 | 기본 submit 동작 | event.preventDefault() |
 
-## 1.8 폼(Form) 요소
+## ⑥ 직접 해보기
 
-```html
-<form>
-  <div>
-    <label for="email">이메일</label>
-    <input type="email" id="email" name="email" required>
-  </div>
-  <div>
-    <label for="message">메시지</label>
-    <textarea id="message" name="message"></textarea>
-  </div>
-  <button type="submit">보내기</button>
-</form>
-```
+1. 인사 함수에 시간대를 받아 오전/오후 인사를 추가한다.
+2. 표에 DOM 행을 추가하고 th/td 관계를 확인한다.
+3. 개발자도구에서 390px로 바꾸어 flex 배치 변화를 확인한다.
 
-- `<label for="email">` + `<input id="email">`: `for`와 `id`를 똑같이 맞춰야 레이블을 클릭해도 입력창이 포커스된다. 접근성의 핵심.
-- `type="email"`, `type="text"`, `type="checkbox"` 등 `input`의 종류를 정한다.
-- `required`: 브라우저 기본 필수 입력 검사 (study5에서 JS로 직접 검사하는 법도 다룬다).
-- `<button type="submit">`: 폼을 제출하는 버튼. `type="button"`이면 제출하지 않고 그냥 클릭 이벤트만 발생.
+## ⑦ ☐ 체크리스트
 
-## 1.9 여러 문서를 링크로 연결해 "사이트"처럼 만들기
+학습자 수행 확인용이다. 문서·코드 작성 완료와 본인의 실습 완료는 다르므로 직접 확인한 뒤 체크한다. 원문 항목 배치는 [반영표](docs/coverage.md)를 따른다.
 
-같은 폴더에 `index.html`, `about.html`, `contact.html`이 있다면:
+- [ ] 시맨틱 태그, 폼, 테이블, 링크
+- [ ] 접근성 기본 (label, alt)
+- [ ] 박스 모델, flex, grid
+- [ ] 반응형 기초
+- [ ] 클래스를 의미 있게 나누는 법
+- [ ] 변수, 함수, 배열/객체
+- [ ] Hello World가 HTTP로 표시된다
+- [ ] CSS 변수 + grid + 반응형
 
-```html
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</nav>
-```
+## ⑧ 다음 단계 연결
 
-이 `<nav>`를 세 파일 모두에 똑같이 넣어두면, 사용자가 어느 페이지에서든 다른 페이지로 이동할 수 있는 "사이트"가 완성된다. study2~3에서 이것을 직접 만든다.
+[study2.md](study2.md)에서 핵심 구조: 함수·ESM 모듈로 이어간다.
 
-## 1.10 체크리스트
-
-- [ ] `<!DOCTYPE html>`, `html`, `head`, `body`의 역할을 설명할 수 있다
-- [ ] 제목(`h1~h6`)·단락·목록·링크·이미지·표를 직접 쓸 수 있다
-- [ ] `header`, `nav`, `main`, `section`, `footer` 같은 시맨틱 태그를 쓰는 이유를 설명할 수 있다
-- [ ] `input`, `label`, `button`으로 간단한 폼을 만들 수 있다
-- [ ] 여러 HTML 파일을 링크로 이어서 사이트처럼 만들 수 있다
-
-다음: [study2.md](study2.md) — HTML 실습 1 (`index.html` 만들기).
+출처: [지정 노션](https://app.notion.com/p/3d6d7dec5e2e8147b212f0a23b93dfc1) · [공통 API v1](https://app.notion.com/p/3d6d7dec5e2e8139adbfd36dd506c65e) · [반영표](docs/coverage.md) · [검증 기록](docs/verification.md). 기술 근거: [MDN Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch), [Node 24 SQLite](https://nodejs.org/docs/latest-v24.x/api/sqlite.html). 설치 버전 API는 package-lock.json과 node_modules의 버전별 공식 문서를 기준으로 확인한다.
