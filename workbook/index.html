@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HTML·CSS·JavaScript 게시판과 문서 AI 학습 실습">
+  <title>Vanilla 학습 게시판</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 이동</a>
+  <header class="bar">
+    <a href="#/">Vanilla 학습 게시판</a>
+    <nav aria-label="주 메뉴"><a href="#/">게시글</a> <a href="#/documents">문서 AI</a> <a href="/final-project/">Todo</a> <a href="/practice/site/">기초 사이트</a></nav>
+    <button id="theme" type="button" aria-pressed="false">다크모드</button>
+  </header>
+  <main id="main" class="container">
+    <h1>작게 만들고 직접 확인하기</h1>
+    <p>HTML로 구조를, CSS로 표현을, JavaScript로 동작을 만듭니다.</p>
+    <p id="message" role="status" aria-live="polite"></p>
+    <section aria-labelledby="auth-title">
+      <h2 id="auth-title">계정</h2>
+      <p id="identity">로그인 전 · 토큰은 메모리에만 보관합니다.</p>
+      <form id="auth-form">
+        <label for="email">이메일</label><input id="email" name="email" type="email" required maxlength="200" autocomplete="username">
+        <label for="password">비밀번호 (12~128자)</label><input id="password" name="password" type="password" required minlength="12" maxlength="128" autocomplete="current-password">
+        <label for="nickname">별명 (회원가입 시)</label><input id="nickname" name="nickname" maxlength="40" autocomplete="nickname">
+        <div class="actions"><button name="action" value="login">로그인</button><button name="action" value="signup">회원가입</button></div>
+      </form>
+      <div class="actions"><button id="logout">로그아웃</button><button id="oauth">GitHub 로그인</button></div>
+    </section>
+    <section id="board" aria-labelledby="board-title">
+      <h2 id="board-title">게시판</h2>
+      <form id="search-form" class="actions"><label for="q">검색어</label><input id="q" name="q" maxlength="200"><button>검색</button></form>
+      <div id="posts" class="card-grid"></div>
+      <div class="actions"><button id="previous">이전</button><span id="page"></span><button id="next">다음</button></div>
+      <h3>글 작성·수정</h3>
+      <form id="post-form">
+        <label for="title">제목</label><input id="title" name="title" required maxlength="200">
+        <label for="body">내용</label><textarea id="body" name="body" required maxlength="10000"></textarea>
+        <label for="tags">태그 (쉼표로 구분)</label><input id="tags" name="tags">
+        <div class="actions"><button>저장</button><button id="cancel-edit" type="button">수정 취소</button></div>
+      </form>
+    </section>
+    <section id="detail" hidden aria-labelledby="detail-title"><h2 id="detail-title">글 상세</h2><div id="post-detail"></div><ul id="comments"></ul><form id="comment-form"><label for="comment">댓글</label><input id="comment" name="body" required maxlength="2000"><button>댓글 작성</button></form></section>
+    <section id="documents" hidden aria-labelledby="documents-title">
+      <h2 id="documents-title">문서 AI · DocuForge 아이디어 실습</h2>
+      <p>TXT·MD(UTF-8, 20,000자 이하)만 지원합니다. 기본값은 모의 응답입니다.</p>
+      <form id="upload-form"><label for="file">문서</label><input id="file" type="file" accept=".txt,.md,text/plain,text/markdown" required><button>업로드</button></form>
+      <label for="document-id">내 문서 선택</label><select id="document-id"></select>
+      <form id="question-form"><label for="question">질문</label><input id="question" name="question" required maxlength="1000"><button>스트리밍 질문</button></form>
+      <button id="stop" type="button">응답 중단</button>
+      <pre id="answer" aria-label="AI 답변"></pre><ul id="sources" aria-label="답변 근거"></ul>
+      <button id="history" type="button">질문 기록</button><ul id="history-list"></ul>
+    </section>
+    <section aria-labelledby="integration-title"><h2 id="integration-title">외부 서비스 연습</h2><div class="actions"><button id="mail">알림 메일</button><button id="checkout">테스트 결제</button><button id="jobs">작업 상태</button></div><pre id="job-output"></pre></section>
+    <dialog id="notice"><p id="notice-text"></p><button id="close-notice">닫기</button></dialog>
+  </main>
+  <footer class="container"><p>외부 서비스 실제 호출은 서버 환경 설정 후 실행됩니다. <a href="/api-docs">OpenAPI JSON</a></p></footer>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+[
+  {
+    "file": "study0.md",
+    "title": "환경 설정",
+    "sources": [
+      "lessons/study0/hello.js",
+      ".env.example",
+      ".gitignore",
+      "package.json"
+    ]
+  },
+  {
+    "file": "study1.md",
+    "title": "Hello World와 기본 문법",
+    "sources": [
+      "lessons/study1/index.html",
+      "lessons/study1/style.css",
+      "lessons/study1/hello.js",
+      "lessons/study1/avatar.svg"
+    ]
+  },
+  {
+    "file": "study2.md",
+    "title": "핵심 구조: 함수·ESM 모듈",
+    "sources": [
+      "lessons/study2/card.js",
+      "lessons/study2/app.js",
+      "lessons/study2/index.html",
+      "practice/site/js/main.js"
+    ]
+  },
+  {
+    "file": "study3.md",
+    "title": "데이터·바인딩·로컬 저장",
+    "sources": [
+      "lessons/study3/index.html",
+      "lessons/study3/state.js",
+      "final-project/js/todo.js",
+      "final-project/js/theme.js",
+      "final-project/js/app.js"
+    ]
+  },
+  {
+    "file": "study4.md",
+    "title": "라우팅과 요청·응답",
+    "sources": [
+      "lessons/study4/index.html",
+      "lessons/study4/router.js",
+      "server/errors.js",
+      "server/static.js"
+    ]
+  },
+  {
+    "file": "study5.md",
+    "title": "폼·입력·검증",
+    "sources": [
+      "lessons/study5/index.html",
+      "lessons/study5/form.js",
+      "server/validation.js"
+    ]
+  },
+  {
+    "file": "study6.md",
+    "title": "DB·API 연동과 CRUD",
+    "sources": [
+      "workbook/js/api.js",
+      "server/sqlite.js",
+      "server/board.js",
+      "practice/site/js/data.js",
+      "practice/site/data/skills.json"
+    ]
+  },
+  {
+    "file": "study7.md",
+    "title": "인증·보안 기초",
+    "sources": [
+      "server/auth.js",
+      "server/validation.js",
+      "server/basic.js"
+    ]
+  },
+  {
+    "file": "study8.md",
+    "title": "구조화·재사용·설정",
+    "sources": [
+      "workbook/js/api.js",
+      "workbook/js/forms.js",
+      "server/index.js",
+      ".env.example"
+    ]
+  },
+  {
+    "file": "study9.md",
+    "title": "테스트·디버깅",
+    "sources": [
+      "tests/core.test.js",
+      "tests/api.test.js"
+    ]
+  },
+  {
+    "file": "study10.md",
+    "title": "빌드·배포·기초 정리",
+    "sources": [
+      "scripts/build.js",
+      "ops/Caddyfile",
+      "scripts/backup.js"
+    ]
+  },
+  {
+    "file": "studyMidpoint.md",
+    "title": "중간 응용: 기초 게시판",
+    "sources": [
+      "midpoint/index.html",
+      "midpoint/app.js",
+      "server/basic.js",
+      "server/sqlite.js",
+      "server/auth.js",
+      "server/validation.js",
+      "server/board.js",
+      "server/errors.js",
+      "server/static.js"
+    ]
+  },
+  {
+    "file": "study11.md",
+    "title": "DB 교체와 ORM 설정",
+    "sources": [
+      "server/repository.js",
+      "lessons/study11/orm.js",
+      "scripts/check-databases.js",
+      "compose.yaml"
+    ]
+  },
+  {
+    "file": "study12.md",
+    "title": "프론트·UI·상태·폼 연동",
+    "sources": [
+      "lessons/study12/index.html",
+      "lessons/study12/demo.js",
+      "scripts/vendor.js",
+      "workbook/js/store.js",
+      "workbook/js/forms.js",
+      "server/validation.js",
+      "workbook/style.css"
+    ]
+  },
+  {
+    "file": "study13.md",
+    "title": "외부 서비스: 메일·결제·업로드·OAuth",
+    "sources": [
+      "server/integrations.js",
+      "workbook/js/file-worker.js"
+    ]
+  },
+  {
+    "file": "study14.md",
+    "title": "REST·OpenAPI·버전·페이지네이션",
+    "sources": [
+      "server/openapi.js",
+      "server/errors.js"
+    ]
+  },
+  {
+    "file": "study15.md",
+    "title": "성능·캐시·비동기·백그라운드",
+    "sources": [
+      "server/static.js",
+      "lessons/study15/measure.js",
+      "server/integrations.js"
+    ]
+  },
+  {
+    "file": "study16.md",
+    "title": "운영·Docker·CI/CD·백업",
+    "sources": [
+      "Dockerfile",
+      ".dockerignore",
+      "compose.yaml",
+      ".github/workflows/ci.yml",
+      "ops/compose.production.yaml",
+      "scripts/backup.js",
+      "scripts/restore.js"
+    ]
+  },
+  {
+    "file": "study17.md",
+    "title": "실시간 알림·파일 처리·확장",
+    "sources": [
+      "server/realtime.js",
+      "workbook/js/realtime.js",
+      "workbook/js/file-worker.js"
+    ]
+  },
+  {
+    "file": "study18.md",
+    "title": "AI API·프롬프트·스트리밍·MCP",
+    "sources": [
+      "server/ai.js",
+      "workbook/js/sse.js",
+      "mcp/server.js",
+      "mcp/client.js"
+    ]
+  },
+  {
+    "file": "studyFinal.md",
+    "title": "심화 응용: 게시판 + 문서 AI",
+    "sources": [
+      "workbook/index.html",
+      "workbook/style.css",
+      "workbook/js/app.js",
+      "workbook/js/api.js",
+      "workbook/js/forms.js",
+      "workbook/js/store.js",
+      "workbook/js/sse.js",
+      "workbook/js/realtime.js",
+      "workbook/js/file-worker.js",
+      "server/index.js",
+      "server/app.js",
+      "server/repository.js",
+      "server/board.js",
+      "server/auth.js",
+      "server/validation.js",
+      "server/errors.js",
+      "server/static.js",
+      "server/integrations.js",
+      "server/ai.js",
+      "server/realtime.js",
+      "server/openapi.js",
+      "mcp/server.js",
+      "mcp/client.js",
+      "Dockerfile",
+      "ops/compose.production.yaml",
+      ".github/workflows/ci.yml"
+    ]
+  }
+]
