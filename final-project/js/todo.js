@@ -2,14 +2,16 @@ const STORAGE_KEY = "final-project-todos";
 
 function loadTodos() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    const value = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return Array.isArray(value) ? value.filter(todo => todo && typeof todo.text === 'string' && typeof todo.done === 'boolean' && Number.isFinite(todo.id)) : [];
   } catch {
     return [];
   }
 }
 
 function saveTodos(todos) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(todos)); }
+  catch { console.warn('Todo 저장이 차단되어 현재 탭에서만 유지됩니다.'); }
 }
 
 export function initTodo() {
@@ -32,6 +34,7 @@ export function initTodo() {
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.checked = todo.done;
+      checkbox.setAttribute('aria-label', `${todo.text} 완료`);
       checkbox.addEventListener("change", () => {
         todo.done = checkbox.checked;
         saveTodos(todos);
