@@ -1,0 +1,57 @@
+name: 학습 검증과 선택 배포
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.14.0
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+      - run: npm run build
+      - run: docker build -t study:check .
+  deploy:
+    needs: verify
+    if: github.event_name != 'pull_request' && vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: 이미지 게시와 SSH 배포
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          set -euo pipefail
+          image="ghcr.io/${GITHUB_REPOSITORY,,}:${GITHUB_SHA}"
+          printf '%s' "$GH_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker build -t "$image" .
+          docker push "$image"
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          scp ops/compose.production.yaml "$DEPLOY_USER@$DEPLOY_HOST:/opt/html-study/compose.yaml"
+          ssh "$DEPLOY_USER@$DEPLOY_HOST" "cd /opt/html-study && STUDY_IMAGE='$image' docker compose pull && STUDY_IMAGE='$image' docker compose up -d --wait"
