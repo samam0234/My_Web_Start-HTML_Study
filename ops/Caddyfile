@@ -1,0 +1,4 @@
+# 실제 보유 도메인으로 바꾸고 DNS A/AAAA를 서버로 연결한다.
+study.example.com {
+    reverse_proxy 127.0.0.1:3000
+}
