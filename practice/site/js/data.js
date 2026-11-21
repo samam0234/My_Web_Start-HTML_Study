@@ -4,7 +4,9 @@ export async function renderSkills() {
 
   try {
     const response = await fetch("data/skills.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const skills = await response.json();
+    if (!Array.isArray(skills)) throw new Error("관심 기술 목록 형식이 올바르지 않습니다.");
 
     list.innerHTML = "";
     skills.forEach((skill) => {
