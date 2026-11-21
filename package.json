@@ -1,0 +1,44 @@
+{
+  "name": "html-css-js-study",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.14.0"
+  },
+  "scripts": {
+    "dev": "node --watch --env-file-if-exists=.env server/index.js",
+    "midpoint": "node --env-file-if-exists=.env server/basic.js",
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "test": "node --test tests/*.test.js",
+    "test:browser": "node scripts/browser-check.js",
+    "test:databases": "node --env-file-if-exists=.env scripts/check-databases.js",
+    "check": "node scripts/check.js",
+    "build": "node scripts/build.js",
+    "vendor": "node scripts/vendor.js",
+    "docs": "python scripts/build_docs.py",
+    "backup": "node --env-file-if-exists=.env scripts/backup.js",
+    "restore": "node --env-file-if-exists=.env scripts/restore.js",
+    "mcp:client": "node --env-file-if-exists=.env mcp/client.js"
+  },
+  "dependencies": {
+    "@ai-sdk/openai-compatible": "^3.0.94",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "ai": "^7.0.179",
+    "bootstrap": "^5.3.9",
+    "drizzle-orm": "^0.45.4",
+    "just-validate": "^4.3.0",
+    "mariadb": "^3.5.5",
+    "mongodb": "^7.9.1",
+    "nanostores": "^1.5.5",
+    "nodemailer": "^10.6.1",
+    "pg": "^8.23.1",
+    "stripe": "^23.2.0",
+    "ws": "^8.23.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "playwright": "^1.65.1"
+  }
+}
