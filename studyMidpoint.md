@@ -54,6 +54,10 @@ flowchart LR
 4. 다음 확장 전에 유지할 API 계약을 적는다. 학습자 자신의 수행 여부는 직접 체크한다.
 
 
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/studyMidpoint/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/studyMidpoint/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `midpoint/index.html` 전체 코드
 
 ```html
@@ -818,6 +822,81 @@ export async function serveStatic(req, res, pathname) {
 | 21 | HTTP 상태·헤더·data/error 본문을 구성해 클라이언트에 응답한다. |
 | 22 | 응답 본문 또는 스트림을 끝내 연결 수명을 정리한다. |
 | 23 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+
+
+### `lessons/studyMidpoint/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>studyMidpoint 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/studyMidpoint/index.html](lessons/studyMidpoint/index.html) · SHA-256(LF 정규화): `3655807c805976bfeb1a8f46788406cd2a28560178d5a467a7617adb5d8c12e1`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/studyMidpoint/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "studyMidpoint · 중간 응용 실행",
+  "intro": "기초 서버는 npm run midpoint로 실행하고 아래 기초 게시판에서 전체 화면 흐름을 실습하세요. 이 화면에서도 공통 목록 요청을 실행할 수 있습니다.",
+  "input": {},
+  "actions": [
+    {
+      "label": "목록 조회",
+      "path": "/posts"
+    }
+  ],
+  "links": [
+    [
+      "기초 게시판 열기",
+      "/midpoint/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/studyMidpoint/app.js](lessons/studyMidpoint/app.js) · SHA-256(LF 정규화): `a8eaa9d0576c39f7522624953b9463887fa1debc3e257dde39d6491ad0b87afa`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "studyMidpoint · 중간 응용 실행",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "기초 서버는 npm run midpoint로 실행하고 아래 기초 게시판에서 전체 화면 흐름을 실습하세요. 이 화면에서도 공통 목록 요청을 실행할 수 있습니다.",` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {},` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "목록 조회",` |
+| 11 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/posts"` |
+| 12 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 13 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 14 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 16 | 현재 처리의 설정·호출·상태를 연결한다: `"기초 게시판 열기",` |
+| 17 | 현재 처리의 설정·호출·상태를 연결한다: `"/midpoint/"` |
+| 18 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 19 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 20 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
