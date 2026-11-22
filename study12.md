@@ -28,6 +28,10 @@ UI 라이브러리는 완성된 가구, 상태 저장소는 공용 장부, 폼 �
 
 라이브러리 공식 근거: [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/), [Nano Stores](https://github.com/nanostores/nanostores), [JustValidate](https://just-validate.dev/docs/intro). 버전과 라이선스는 package-lock.json과 lessons/study12/vendor/에 보존한다. 라이브러리 배포 파일은 직접 작성하는 전체 코드에서 제외하고 재현 스크립트를 제공한다.
 
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study12/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study12/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `lessons/study12/index.html` 전체 코드
 
 ```html
