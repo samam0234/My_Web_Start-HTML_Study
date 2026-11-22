@@ -23,6 +23,12 @@
 3. .env에서 PUBLIC_ORIGIN과 CORS_ORIGIN을 동일한 개발 주소로 설정한다.
 4. 운영에서는 HTTPS 주소와 별도 DB·SMTP·AI 시크릿을 넣는다.
 
+
+
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study8/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study8/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `workbook/js/api.js` 전체 코드
 
 ```javascript
@@ -218,6 +224,267 @@ MCP_API_BASE=http://localhost:3000
 | 27 | 서버 설정 AI_DAILY_REQUEST_LIMIT의 예시 값이며 실제 비밀은 .env에만 넣는다. |
 | 28 | 서버 설정 AI_MAX_OUTPUT_TOKENS의 예시 값이며 실제 비밀은 .env에만 넣는다. |
 | 29 | 서버 설정 MCP_API_BASE의 예시 값이며 실제 비밀은 .env에만 넣는다. |
+
+
+### `lessons/study8/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>study8 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/study8/index.html](lessons/study8/index.html) · SHA-256(LF 정규화): `9dc0658fe43afdbe3193e2dee9603238fdf60048abf71bcf6623c9483c4eb72d`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/study8/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "study8 · 공통 모듈 재사용",
+  "intro": "이 화면은 공통 api.js와 store.js를 import합니다. app.js는 설정, runner.js는 제출·오류·출력 수명을 맡습니다.",
+  "input": {},
+  "actions": [
+    {
+      "label": "상태 모듈 호출",
+      "kind": "state"
+    },
+    {
+      "label": "목록 조회",
+      "path": "/posts"
+    }
+  ],
+  "links": [
+    [
+      "전체 게시판·문서 AI",
+      "/workbook/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/study8/app.js](lessons/study8/app.js) · SHA-256(LF 정규화): `0d0cb30c6d9beab9bc259e643a6d8072663d1bf3027034eb5ed1d9ca77a7ed33`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "study8 · 공통 모듈 재사용",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "이 화면은 공통 api.js와 store.js를 import합니다. app.js는 설정, runner.js는 제출·오류·출력 수명을 맡습니다.",` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {},` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "상태 모듈 호출",` |
+| 11 | 현재 처리의 설정·호출·상태를 연결한다: `"kind": "state"` |
+| 12 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 13 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 14 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "목록 조회",` |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/posts"` |
+| 16 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 17 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 18 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 19 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 20 | 현재 처리의 설정·호출·상태를 연결한다: `"전체 게시판·문서 AI",` |
+| 21 | 현재 처리의 설정·호출·상태를 연결한다: `"/workbook/"` |
+| 22 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 23 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 24 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+
+
+### `lessons/runner.js` 전체 코드
+
+```javascript
+import { api, json, setToken } from '../workbook/js/api.js';
+import { readSSE } from '../workbook/js/sse.js';
+import { createStore } from '../workbook/js/store.js';
+
+// 단계별 설정은 각 app.js에 두고 네트워크·출력·취소 수명만 공유한다.
+export function mountLesson(config) {
+  const main = document.querySelector('main');
+  const title = document.createElement('h1'); title.textContent = config.title;
+  const intro = document.createElement('p'); intro.textContent = config.intro;
+  const nav = document.createElement('nav');
+  const home = document.createElement('a'); home.href = '/lessons/'; home.textContent = '전체 실습 목차';
+  nav.append(home);
+  const editor = document.createElement('textarea'); editor.id = 'payload'; editor.rows = 10;
+  editor.value = JSON.stringify(config.input || {}, null, 2);
+  const label = document.createElement('label'); label.htmlFor = editor.id; label.textContent = '요청 JSON (필요한 값을 수정하세요)';
+  const output = document.createElement('pre'); output.id = 'output'; output.setAttribute('role', 'status');
+  const actions = document.createElement('div'); actions.className = 'actions';
+  main.append(nav, title, intro, label, editor, actions, output);
+  let selectedId, documentId, socket, controller;
+  const buttons = [];
+  for (const action of config.actions) {
+    const button = document.createElement('button'); button.textContent = action.label; buttons.push(button); actions.append(button);
+    button.addEventListener('click', async () => {
+      buttons.forEach(b => { b.disabled = true; });
+      output.textContent = '실행 중';
+      try {
+        const input = JSON.parse(editor.value);
+        let result;
+        if (action.kind === 'state') {
+          const store = createStore({ count: 0 });
+          store.set({ count: 1 }); result = { state: store.get(), module: '공통 상태 모듈을 호출했습니다.' };
+        } else if (action.kind === 'tests') {
+          const store = createStore({ count: 0 });
+          const values = []; const stop = store.subscribe(value => values.push(value.count));
+          store.set({ count: 1 }); stop(); store.set({ count: 2 });
+          if (values.join() !== '1') throw new Error('구독 해제 검사 실패');
+          const original = store.get(); original.count = 99;
+          if (store.get().count !== 2) throw new Error('외부 변이 차단 실패');
+          result = { passed: ['구독 전달', '구독 해제', '상태 복제'], requestTests: '전체 HTTP 검사는 npm test로 실행합니다.' };
+        } else if (action.kind === 'socket') {
+          socket?.close();
+          socket = new WebSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/ws`);
+          socket.onmessage = event => { output.textContent = event.data; };
+          socket.onerror = () => { output.textContent = '연결 실패: 심화 서버와 Origin을 확인하세요.'; };
+          await new Promise((resolve, reject) => { socket.onopen = resolve; socket.onclose = () => reject(new Error('연결이 닫혔습니다.')); });
+          result = { connected: true, next: '다른 탭 /workbook/에서 글을 변경하면 알림이 표시됩니다.' };
+        } else if (action.kind === 'health' || action.kind === 'schema' || action.kind === 'cache') {
+          const response = await fetch(action.kind === 'schema' ? '/api-docs' : action.kind === 'cache' ? '/workbook/style.css' : '/health');
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          result = action.kind === 'cache' ? { status: response.status, etag: response.headers.get('etag'), cache: response.headers.get('cache-control') } : await response.json();
+        } else {
+          const path = action.path.replace('{id}', String(selectedId || input.id || '')).replace('{documentId}', String(documentId || input.documentId || ''));
+          if (path.includes('//') || path.endsWith('/posts/')) throw new Error('먼저 등록하거나 요청 JSON에 id를 입력하세요.');
+          let body;
+          if (action.fields) body = Object.fromEntries(action.fields.filter(key => key in input).map(key => [key, input[key]]));
+          if (action.stream) {
+            controller = new AbortController();
+            const response = await api(path, { ...json('POST', { documentId: documentId || input.documentId, question: input.question }), raw: true, signal: controller.signal });
+            output.textContent = '';
+            await readSSE(response, event => { output.textContent += event.text || (event.sources ? JSON.stringify(event) + '\n' : ''); });
+          } else {
+            result = await api(path, json(action.method || 'GET', body));
+            if (result?.data?.accessToken) setToken(result.data.accessToken);
+            if (path === '/auth/logout') setToken('');
+            if (path === '/posts' && action.method === 'POST') selectedId = result.data.id;
+            if (path === '/documents' && action.method === 'POST') documentId = result.data.id;
+            // 원문 토큰은 화면/로그로 출력하지 않는다.
+            if (result?.data?.accessToken) result = { data: { user: result.data.user, message: '이 탭 메모리에 로그인 토큰을 보관했습니다.' } };
+          }
+        }
+        if (result !== undefined) output.textContent = JSON.stringify(result, null, 2);
+      } catch (error) { output.textContent = `${error.status || ''} ${error.message}`; }
+      finally { buttons.forEach(b => { b.disabled = false; }); }
+    });
+  }
+  const stop = document.createElement('button'); stop.textContent = '연결·응답 중단';
+  stop.onclick = () => { controller?.abort(); socket?.close(); };
+  main.append(stop);
+  for (const [text, href] of config.links || []) {
+    const p = document.createElement('p'), a = document.createElement('a'); a.textContent = text; a.href = href; p.append(a); main.append(p);
+  }
+  window.addEventListener('pagehide', () => { controller?.abort(); socket?.close(); }, { once: true });
+}
+```
+
+원본: [lessons/runner.js](lessons/runner.js) · SHA-256(LF 정규화): `89c5bdee38c6cf9b8d6f77766ab09e760a332f40e6b081c4d607496b712865d6`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 2 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 5 | 단계별 설정은 각 app.js에 두고 네트워크·출력·취소 수명만 공유한다. |
+| 6 | 다른 모듈이 사용할 인터페이스를 공개한다. 이름 있는 처리 함수를 정의하고 인자로 필요한 값을 받는다. |
+| 7 | `main`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 8 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 9 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 10 | `nav`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 11 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 12 | 데이터로 만든 DOM 요소를 부모에 삽입하거나 기존 화면을 교체한다. |
+| 13 | `editor`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 14 | 객체를 JSON 문자열로 바꿔 저장·전송·관찰한다. |
+| 15 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 16 | `output`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 17 | `actions`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 18 | 데이터로 만든 DOM 요소를 부모에 삽입하거나 기존 화면을 교체한다. |
+| 19 | `selectedId, documentId, socket, controller;`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 20 | `buttons`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 21 | 목록 또는 스트림의 각 항목을 반복 처리한다. |
+| 22 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 23 | 사용자/연결 이벤트가 발생할 때 실행할 콜백을 등록한다. |
+| 24 | 현재 처리의 설정·호출·상태를 연결한다: `buttons.forEach(b => { b.disabled = true; });` |
+| 25 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 26 | 현재 처리의 설정·호출·상태를 연결한다: `try {` |
+| 27 | 직렬화된 문자열을 객체로 복구한다. 잘못된 형식은 예외 경로로 보낸다. |
+| 28 | `result;`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 29 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (action.kind === 'state') { |
+| 30 | `store`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 31 | 현재 처리의 설정·호출·상태를 연결한다: `store.set({ count: 1 }); result = { state: store.get(), module: '공통 상태 모듈을 호출했습니다.' };` |
+| 32 | 현재 처리의 설정·호출·상태를 연결한다: `} else if (action.kind === 'tests') {` |
+| 33 | `store`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 34 | `values`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 35 | 현재 처리의 설정·호출·상태를 연결한다: `store.set({ count: 1 }); stop(); store.set({ count: 2 });` |
+| 36 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (values.join() !== '1') throw new Error('구독 해제 검사 실패'); |
+| 37 | `original`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 38 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (store.get().count !== 2) throw new Error('외부 변이 차단 실패'); |
+| 39 | 현재 처리의 설정·호출·상태를 연결한다: `result = { passed: ['구독 전달', '구독 해제', '상태 복제'], requestTests: '전체 HTTP 검사는 npm test로 실행합니다.' };` |
+| 40 | 현재 처리의 설정·호출·상태를 연결한다: `} else if (action.kind === 'socket') {` |
+| 41 | 현재 처리의 설정·호출·상태를 연결한다: `socket?.close();` |
+| 42 | 현재 처리의 설정·호출·상태를 연결한다: `socket = new WebSocket(${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/ws);` |
+| 43 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 44 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 45 | 비동기 작업 완료를 기다린 후 다음 단계로 진행한다: await new Promise((resolve, reject) => { socket.onopen = resolve; socket.onclose = () => reject(new  |
+| 46 | 현재 처리의 설정·호출·상태를 연결한다: `result = { connected: true, next: '다른 탭 /workbook/에서 글을 변경하면 알림이 표시됩니다.' };` |
+| 47 | 현재 처리의 설정·호출·상태를 연결한다: `} else if (action.kind === 'health' // action.kind === 'schema' // action.kind === 'cache') {` |
+| 48 | 약속한 URL·메소드·본문으로 요청하고 응답을 기다린다. |
+| 49 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (!response.ok) throw new Error(`HTTP ${response.status}`); |
+| 50 | 비동기 작업 완료를 기다린 후 다음 단계로 진행한다: result = action.kind === 'cache' ? { status: response.status, etag: response.headers.get('etag'), ca |
+| 51 | 현재 처리의 설정·호출·상태를 연결한다: `} else {` |
+| 52 | `path`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 53 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (path.includes('//') // path.endsWith('/posts/')) throw new Error('먼저 등록하거나 요청 JSON에 id를 입력하세요.'); |
+| 54 | `body;`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
+| 55 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (action.fields) body = Object.fromEntries(action.fields.filter(key => key in input).map(key => [key, input[ |
+| 56 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (action.stream) { |
+| 57 | 현재 처리의 설정·호출·상태를 연결한다: `controller = new AbortController();` |
+| 58 | 약속한 URL·메소드·본문으로 요청하고 응답을 기다린다. |
+| 59 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 60 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 61 | 현재 처리의 설정·호출·상태를 연결한다: `} else {` |
+| 62 | 약속한 URL·메소드·본문으로 요청하고 응답을 기다린다. |
+| 63 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (result?.data?.accessToken) setToken(result.data.accessToken); |
+| 64 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (path === '/auth/logout') setToken(''); |
+| 65 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (path === '/posts' && action.method === 'POST') selectedId = result.data.id; |
+| 66 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (path === '/documents' && action.method === 'POST') documentId = result.data.id; |
+| 67 | 원문 토큰은 화면/로그로 출력하지 않는다. |
+| 68 | 입력·상태·경로 조건을 검사하여 해당 처리만 실행한다: if (result?.data?.accessToken) result = { data: { user: result.data.user, message: '이 탭 메모리에 로그인 토큰을 보관했습니다.'  |
+| 69 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 70 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 71 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 72 | 실패를 잡아 공통 오류 또는 복구 상태로 바꾼다. |
+| 73 | 성공·실패와 관계없이 버튼·연결·자원을 정리한다. |
+| 74 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 75 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 76 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 77 | 사용자/연결 이벤트가 발생할 때 실행할 콜백을 등록한다. |
+| 78 | 데이터로 만든 DOM 요소를 부모에 삽입하거나 기존 화면을 교체한다. |
+| 79 | 목록 또는 스트림의 각 항목을 반복 처리한다. |
+| 80 | 외부 문자열을 HTML로 해석하지 않고 화면의 텍스트로 반영한다. |
+| 81 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 82 | 사용자/연결 이벤트가 발생할 때 실행할 콜백을 등록한다. |
+| 83 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
