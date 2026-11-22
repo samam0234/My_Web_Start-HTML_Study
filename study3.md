@@ -23,6 +23,12 @@ localStorage는 동일 origin에 속한 문자열 저장소다. 객체·배열�
 3. 값을 잘못된 JSON으로 바꾼 후 새로고침하여 복구 문구를 본다.
 4. /final-project/에서 Todo를 추가·완료·삭제하고 새로고침한다.
 
+
+
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study3/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study3/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `lessons/study3/index.html` 전체 코드
 
 ```html
