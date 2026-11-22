@@ -26,6 +26,12 @@ WebSocket과 SSE는 목적이 다르다. 게시글 변경 통지는 WebSocket으
 4. 서버를 재시작해 재연결을 확인한다.
 5. UTF-8 TXT·MD와 잘못된 인코딩·큰 파일을 업로드한다.
 
+
+
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study17/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study17/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `server/realtime.js` 전체 코드
 
 ```javascript
@@ -160,6 +166,81 @@ self.onmessage = async ({ data: file }) => {
 | 7 | 현재 처리의 설정·호출·상태를 연결한다: `self.postMessage({ filename: file.name, text });` |
 | 8 | 실패를 잡아 공통 오류 또는 복구 상태로 바꾼다. |
 | 9 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+
+
+### `lessons/study17/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>study17 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/study17/index.html](lessons/study17/index.html) · SHA-256(LF 정규화): `b446edc639968aa5e2a7a36144cb150f81182992106fe72c50cbf43c40174435`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/study17/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "study17 · 실시간 알림",
+  "intro": "알림 연결 후 다른 탭 /workbook/에서 글을 변경하세요. 개인 문서가 아닌 공개 변경 id만 받습니다.",
+  "input": {},
+  "actions": [
+    {
+      "label": "알림 연결",
+      "kind": "socket"
+    }
+  ],
+  "links": [
+    [
+      "전체 게시판·문서 AI",
+      "/workbook/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/study17/app.js](lessons/study17/app.js) · SHA-256(LF 정규화): `30f875f1cbba346a8ee56b191af9519ea2f462648d4daf42eb8da52deca93cc4`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "study17 · 실시간 알림",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "알림 연결 후 다른 탭 /workbook/에서 글을 변경하세요. 개인 문서가 아닌 공개 변경 id만 받습니다.",` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {},` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "알림 연결",` |
+| 11 | 현재 처리의 설정·호출·상태를 연결한다: `"kind": "socket"` |
+| 12 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 13 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 14 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 16 | 현재 처리의 설정·호출·상태를 연결한다: `"전체 게시판·문서 AI",` |
+| 17 | 현재 처리의 설정·호출·상태를 연결한다: `"/workbook/"` |
+| 18 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 19 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 20 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
