@@ -25,6 +25,12 @@ HTML 태그는 문서의 뼈대, CSS 선택자는 꾸밀 대상을 가리키는 
 3. Elements에서 h1·label·표 헤더를 확인하고 Console에서 skills 같은 모듈 내부 변수는 전역이 아님을 확인한다.
 4. Live Server로 이 정적 폴더를 별도로 열어 파일 저장 후 자동 새로고침을 본다. Node 개발 서버에서는 직접 새로고침한다.
 
+
+
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study1/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study1/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `lessons/study1/index.html` 전체 코드
 
 ```html
