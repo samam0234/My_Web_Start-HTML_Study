@@ -38,6 +38,10 @@ compose의 계정은 루프백 로컬 실습 전용이다. 운영에서는 별�
 
 공식 기술 근거: [node-postgres 매개변수 질의](https://node-postgres.com/features/queries), [MariaDB Promise API](https://mariadb.com/docs/connectors/mariadb-connector-nodejs/connector-nodejs-promise-api).
 
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study11/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study11/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `server/repository.js` 전체 코드
 
 ```javascript
@@ -343,6 +347,81 @@ volumes:
 | 36 | YAML 설정에서 postgres-data 항목의 실행 조건·값·하위 단계를 선언한다. |
 | 37 | YAML 설정에서 mariadb-data 항목의 실행 조건·값·하위 단계를 선언한다. |
 | 38 | YAML 설정에서 mongo-data 항목의 실행 조건·값·하위 단계를 선언한다. |
+
+
+### `lessons/study11/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>study11 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/study11/index.html](lessons/study11/index.html) · SHA-256(LF 정규화): `68ea09f1c96b86de0567981243ce8431db9085d1c39fb92cca7eda56e3e21c3a`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/study11/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "study11 · DB 교체 확인",
+  "intro": "서버를 중지하고 .env의 DB_DRIVER·DATABASE_URL을 바꾼 뒤 다시 시작하세요. 이 화면은 같은 API 계약으로 자료를 읽습니다. ORM 예제는 터미널에서 실행합니다.",
+  "input": {},
+  "actions": [
+    {
+      "label": "목록 조회",
+      "path": "/posts"
+    }
+  ],
+  "links": [
+    [
+      "전체 게시판·문서 AI",
+      "/workbook/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/study11/app.js](lessons/study11/app.js) · SHA-256(LF 정규화): `ea8bf50ea9b39ffc554aa29814cbd513aca69a42a30c55f0dc022c5f758ea1db`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "study11 · DB 교체 확인",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "서버를 중지하고 .env의 DB_DRIVER·DATABASE_URL을 바꾼 뒤 다시 시작하세요. 이 화면은 같은 API 계약으로 자료를 읽습니다. ORM 예제는 터미널에서 실행합니다.",` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {},` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "목록 조회",` |
+| 11 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/posts"` |
+| 12 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 13 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 14 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 16 | 현재 처리의 설정·호출·상태를 연결한다: `"전체 게시판·문서 AI",` |
+| 17 | 현재 처리의 설정·호출·상태를 연결한다: `"/workbook/"` |
+| 18 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 19 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 20 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
