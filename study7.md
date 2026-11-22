@@ -27,6 +27,12 @@ XSS는 외부 문자열이 스크립트로 실행되는 문제다. textContent�
 3. 글을 작성한 뒤 다른 이메일로 가입하여 같은 글 수정·삭제를 요청한다.
 4. 로그아웃 후 이전 토큰으로 /api/auth/me를 호출해 401을 확인한다.
 
+
+
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study7/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study7/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `server/auth.js` 전체 코드
 
 ```javascript
@@ -325,6 +331,137 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
 | 72 | 개발·운영에서 관찰할 실행 결과를 콘솔에 남긴다. |
 | 73 | 현재 처리의 설정·호출·상태를 연결한다: `process.once('SIGINT', () => void app.close());` |
 | 74 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+
+
+### `lessons/study7/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>study7 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/study7/index.html](lessons/study7/index.html) · SHA-256(LF 정규화): `8e6341a76f4b287e4ccb0b820b8000ff177440d841ce57f0c17cb6e1629dbc3b`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/study7/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "study7 · 인증·권한",
+  "intro": "로그인 전 내 정보 401, 가입·로그인 후 200, 로그아웃 후 401을 확인하세요. 비밀번호는 학습용 새 계정에만 사용하세요.",
+  "input": {
+    "email": "lesson@example.com",
+    "password": "lesson-password-123",
+    "nickname": "학습자"
+  },
+  "actions": [
+    {
+      "label": "내 정보",
+      "path": "/auth/me"
+    },
+    {
+      "label": "회원가입",
+      "path": "/auth/signup",
+      "method": "POST",
+      "fields": [
+        "email",
+        "password",
+        "nickname"
+      ]
+    },
+    {
+      "label": "로그인",
+      "path": "/auth/login",
+      "method": "POST",
+      "fields": [
+        "email",
+        "password"
+      ]
+    },
+    {
+      "label": "로그아웃",
+      "path": "/auth/logout",
+      "method": "POST"
+    }
+  ],
+  "links": [
+    [
+      "전체 게시판·문서 AI",
+      "/workbook/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/study7/app.js](lessons/study7/app.js) · SHA-256(LF 정규화): `d097f742291245629f71fe26a2f7d497d4fad9f4d7c36c6009a929de2910c558`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "study7 · 인증·권한",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "로그인 전 내 정보 401, 가입·로그인 후 200, 로그아웃 후 401을 확인하세요. 비밀번호는 학습용 새 계정에만 사용하세요.",` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"email": "lesson@example.com",` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `"password": "lesson-password-123",` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"nickname": "학습자"` |
+| 11 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 12 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 13 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 14 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "내 정보",` |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/auth/me"` |
+| 16 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 17 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 18 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "회원가입",` |
+| 19 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/auth/signup",` |
+| 20 | 현재 처리의 설정·호출·상태를 연결한다: `"method": "POST",` |
+| 21 | 현재 처리의 설정·호출·상태를 연결한다: `"fields": [` |
+| 22 | 현재 처리의 설정·호출·상태를 연결한다: `"email",` |
+| 23 | 현재 처리의 설정·호출·상태를 연결한다: `"password",` |
+| 24 | 현재 처리의 설정·호출·상태를 연결한다: `"nickname"` |
+| 25 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 26 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 27 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 28 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "로그인",` |
+| 29 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/auth/login",` |
+| 30 | 현재 처리의 설정·호출·상태를 연결한다: `"method": "POST",` |
+| 31 | 현재 처리의 설정·호출·상태를 연결한다: `"fields": [` |
+| 32 | 현재 처리의 설정·호출·상태를 연결한다: `"email",` |
+| 33 | 현재 처리의 설정·호출·상태를 연결한다: `"password"` |
+| 34 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 35 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 36 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 37 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "로그아웃",` |
+| 38 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/auth/logout",` |
+| 39 | 현재 처리의 설정·호출·상태를 연결한다: `"method": "POST"` |
+| 40 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 41 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 42 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 43 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 44 | 현재 처리의 설정·호출·상태를 연결한다: `"전체 게시판·문서 AI",` |
+| 45 | 현재 처리의 설정·호출·상태를 연결한다: `"/workbook/"` |
+| 46 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 47 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 48 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
