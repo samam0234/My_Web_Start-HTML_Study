@@ -39,6 +39,10 @@ DevTools Sources에서 중단점을 걸고 입력→요청→응답→화면 순
 | DB 자료 사라짐 | 다른 파일·볼륨 미연결 | SQLITE_PATH·작업 폴더·볼륨 확인 |
 
 
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study9/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study9/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `tests/core.test.js` 전체 코드
 
 ```javascript
@@ -401,6 +405,89 @@ test('API v1 전체 흐름·권한·영속성·문서 AI·정적 보안', async 
 | 101 | 현재 처리의 설정·호출·상태를 연결한다: `t.diagnostic('회원가입→로그인→게시글·댓글 CRUD→문서 AI→재시작→로그아웃 확인');` |
 | 102 | 성공·실패와 관계없이 버튼·연결·자원을 정리한다. |
 | 103 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+
+
+### `lessons/study9/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>study9 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/study9/index.html](lessons/study9/index.html) · SHA-256(LF 정규화): `572b2d5b6904b3f5df7ea8c6fae4ff44f263f33d04ce43f71922ce7a461992d8`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/study9/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "study9 · 브라우저 단위 검사",
+  "intro": "실제 상태 모듈의 구독·구독 해제·복제 격리를 검사합니다. 요청·서버 검사는 루트에서 npm test를 실행하세요.",
+  "input": {},
+  "actions": [
+    {
+      "label": "단위 검사 실행",
+      "kind": "tests"
+    },
+    {
+      "label": "요청 상태 확인",
+      "kind": "health"
+    }
+  ],
+  "links": [
+    [
+      "전체 게시판·문서 AI",
+      "/workbook/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/study9/app.js](lessons/study9/app.js) · SHA-256(LF 정규화): `79c278e6ff1c794243eda2699be339cbbdf38bbb78adface9de999e2cc6a09a0`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "study9 · 브라우저 단위 검사",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "실제 상태 모듈의 구독·구독 해제·복제 격리를 검사합니다. 요청·서버 검사는 루트에서 npm test를 실행하세요.",` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {},` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "단위 검사 실행",` |
+| 11 | 현재 처리의 설정·호출·상태를 연결한다: `"kind": "tests"` |
+| 12 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 13 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 14 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "요청 상태 확인",` |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `"kind": "health"` |
+| 16 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 17 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 18 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 19 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 20 | 현재 처리의 설정·호출·상태를 연결한다: `"전체 게시판·문서 AI",` |
+| 21 | 현재 처리의 설정·호출·상태를 연결한다: `"/workbook/"` |
+| 22 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 23 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 24 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
