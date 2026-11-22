@@ -36,6 +36,10 @@
 - [ ] 이 저장소의 외부 배포는 별도 계정·도메인 설정 후 수행한다. 문서 작성만으로 배포 완료 처리하지 않는다.
 
 
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study10/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study10/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `scripts/build.js` 전체 코드
 
 ```javascript
@@ -43,12 +47,12 @@ import { cp, mkdir, writeFile } from 'node:fs/promises';
 
 // 번들러 없이 정적 파일을 복사한다. 서버와 비밀 설정은 산출물에서 제외한다.
 await mkdir('dist', { recursive: true });
-for (const folder of ['workbook', 'midpoint', 'lessons', 'practice/site', 'final-project']) await cp(folder, `dist/${folder}`, { recursive: true, filter: path => !/lessons[\\/]study(0|11|15)([\\/]|$)/.test(path) });
+for (const folder of ['workbook', 'midpoint', 'lessons', 'practice/site', 'final-project']) await cp(folder, `dist/${folder}`, { recursive: true, filter: path => !/lessons[\\/]study(?:0[\\/]hello|11[\\/]orm|15[\\/]measure)\.js$/.test(path) });
 await writeFile('dist/index.html', '<!doctype html><html lang="ko"><meta charset="utf-8"><title>학습 실습</title><a href="workbook/">게시판 실습 열기 (API 서버 필요)</a><a href="practice/site/">정적 기초 사이트</a><a href="final-project/">정적 Todo</a></html>');
 console.log('dist 생성 완료 · API 기능은 npm start 서버가 필요합니다.');
 ```
 
-원본: [scripts/build.js](scripts/build.js) · SHA-256(LF 정규화): `38dadf6840e83057b4e86d5daaec6ba1572711244ca8ca13b6ec75c20406b10e`
+원본: [scripts/build.js](scripts/build.js) · SHA-256(LF 정규화): `14f692481a4f948dc42f9c74ba5260ba1bff3599fcc494e78eb2d28907031e43`
 
 줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
 
@@ -111,6 +115,97 @@ finally { db.close(); }
 | 7 | `path`에 계산값·상태·함수·의존성을 묶어 이후 처리에서 사용한다. |
 | 8 | 비동기 작업 완료를 기다린 후 다음 단계로 진행한다: try { await backup(db, path); console.log(`백업: ${path}`); } |
 | 9 | 성공·실패와 관계없이 버튼·연결·자원을 정리한다. |
+
+
+### `lessons/study10/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>study10 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/study10/index.html](lessons/study10/index.html) · SHA-256(LF 정규화): `ee6b507b82bba19be09fabcb038c384a7c86decff255275d20786a89fa569140`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/study10/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "study10 · 배포 후 점검",
+  "intro": "npm run build 후 정적 파일을 확인하세요. API 서버 배포에서는 /health와 실제 목록 조회를 둘 다 확인해야 합니다.",
+  "input": {},
+  "actions": [
+    {
+      "label": "서버 상태",
+      "kind": "health"
+    },
+    {
+      "label": "목록 조회",
+      "path": "/posts"
+    },
+    {
+      "label": "정적 캐시 헤더",
+      "kind": "cache"
+    }
+  ],
+  "links": [
+    [
+      "전체 게시판·문서 AI",
+      "/workbook/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/study10/app.js](lessons/study10/app.js) · SHA-256(LF 정규화): `fa6c36a769341c9bae6d77fb2075b7bd75c3bd74adfb48280ca4947b4f784a0a`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "study10 · 배포 후 점검",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "npm run build 후 정적 파일을 확인하세요. API 서버 배포에서는 /health와 실제 목록 조회를 둘 다 확인해야 합니다.",` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {},` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "서버 상태",` |
+| 11 | 현재 처리의 설정·호출·상태를 연결한다: `"kind": "health"` |
+| 12 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 13 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 14 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "목록 조회",` |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/posts"` |
+| 16 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 17 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 18 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "정적 캐시 헤더",` |
+| 19 | 현재 처리의 설정·호출·상태를 연결한다: `"kind": "cache"` |
+| 20 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 21 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 22 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 23 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 24 | 현재 처리의 설정·호출·상태를 연결한다: `"전체 게시판·문서 AI",` |
+| 25 | 현재 처리의 설정·호출·상태를 연결한다: `"/workbook/"` |
+| 26 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 27 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 28 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
