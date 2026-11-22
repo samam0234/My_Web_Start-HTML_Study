@@ -25,6 +25,12 @@ async/await는 I/O 대기를 표현하지만 CPU 작업을 자동으로 다른 �
 3. 문서 파일 업로드 중 입력 UI가 응답하는지 Performance에서 관찰한다.
 4. 메일 접수 응답과 jobs 완료 시간을 나누어 기록한다.
 
+
+
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study15/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study15/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `server/static.js` 전체 코드
 
 ```javascript
@@ -270,6 +276,89 @@ export function createIntegrations(config, repo) {
 | 69 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 | 70 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 | 71 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+
+
+### `lessons/study15/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>study15 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/study15/index.html](lessons/study15/index.html) · SHA-256(LF 정규화): `80f8d40284719e683d20c94dc95811a0a5a291925993fb4b03f878a18f3c1270`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/study15/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "study15 · 성능·캐시 관찰",
+  "intro": "정적 CSS의 ETag·Cache-Control을 확인하세요. 20회 중앙값·p95 측정은 node lessons/study15/measure.js로 실행합니다.",
+  "input": {},
+  "actions": [
+    {
+      "label": "캐시 헤더 관찰",
+      "kind": "cache"
+    },
+    {
+      "label": "목록 조회",
+      "path": "/posts"
+    }
+  ],
+  "links": [
+    [
+      "전체 게시판·문서 AI",
+      "/workbook/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/study15/app.js](lessons/study15/app.js) · SHA-256(LF 정규화): `f93ce1ccc24dc97b7ec879e82c704880404ce7cc9065b6893d9c3230a2cd213a`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "study15 · 성능·캐시 관찰",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "정적 CSS의 ETag·Cache-Control을 확인하세요. 20회 중앙값·p95 측정은 node lessons/study15/measure.js로 실행합니다.",` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {},` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "캐시 헤더 관찰",` |
+| 11 | 현재 처리의 설정·호출·상태를 연결한다: `"kind": "cache"` |
+| 12 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 13 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 14 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "목록 조회",` |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/posts"` |
+| 16 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 17 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 18 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 19 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 20 | 현재 처리의 설정·호출·상태를 연결한다: `"전체 게시판·문서 AI",` |
+| 21 | 현재 처리의 설정·호출·상태를 연결한다: `"/workbook/"` |
+| 22 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 23 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 24 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
