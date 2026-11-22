@@ -41,6 +41,10 @@ SQLite 온라인 백업 API는 WAL과 일관성을 고려하여 사본을 만든
 외부 DB 백업: PostgreSQL `pg_dump`/`pg_restore`, MariaDB `mariadb-dump`, MongoDB `mongodump`/`mongorestore`를 해당 버전 공식 문서에 맞춰 사용한다. 비밀번호를 명령 문자열·로그에 직접 적지 않는다.
 
 
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study16/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study16/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `Dockerfile` 전체 코드
 
 ```text
@@ -440,6 +444,89 @@ console.log(`복원 완료: SQLITE_PATH=${target} 로 변경한 뒤 서버를 �
 | 14 | 비동기 작업 완료를 기다린 후 다음 단계로 진행한다: await mkdir(dirname(target), { recursive: true }); |
 | 15 | 비동기 작업 완료를 기다린 후 다음 단계로 진행한다: await copyFile(source, target, constants.COPYFILE_EXCL); |
 | 16 | 개발·운영에서 관찰할 실행 결과를 콘솔에 남긴다. |
+
+
+### `lessons/study16/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>study16 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/study16/index.html](lessons/study16/index.html) · SHA-256(LF 정규화): `e5a1007d5a878d3a7535a045017a4f7a5a1fed39a4d60f1d99afa63ba7cb03b5`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/study16/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "study16 · 운영 점검",
+  "intro": "Docker 엔진 기동 후 docker compose up -d --build, 로그·영속 볼륨·백업을 문서 순서대로 확인하세요. 아래는 배포 서버의 HTTP 상태 점검이며 Docker 실행을 대신하지 않습니다.",
+  "input": {},
+  "actions": [
+    {
+      "label": "서버 상태",
+      "kind": "health"
+    },
+    {
+      "label": "프로세스 지표",
+      "path": "/metrics"
+    }
+  ],
+  "links": [
+    [
+      "전체 게시판·문서 AI",
+      "/workbook/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/study16/app.js](lessons/study16/app.js) · SHA-256(LF 정규화): `29c35a270e52b9b4bf60bc9c68713e32a41f48bbb55f02e08adcd8585be179bc`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "study16 · 운영 점검",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "Docker 엔진 기동 후 docker compose up -d --build, 로그·영속 볼륨·백업을 문서 순서대로 확인하세요. 아래는 배포 서버의 HTTP 상태 점검이며 Docker 실행을 대신` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {},` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "서버 상태",` |
+| 11 | 현재 처리의 설정·호출·상태를 연결한다: `"kind": "health"` |
+| 12 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 13 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 14 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "프로세스 지표",` |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/metrics"` |
+| 16 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 17 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 18 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 19 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 20 | 현재 처리의 설정·호출·상태를 연결한다: `"전체 게시판·문서 AI",` |
+| 21 | 현재 처리의 설정·호출·상태를 연결한다: `"/workbook/"` |
+| 22 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 23 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 24 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
