@@ -23,6 +23,12 @@ URL은 우편 주소, 메소드는 요청 종류, 동적 id는 각 자료의 우
 3. 뒤로 가기와 앞으로 가기를 실행한다.
 4. curl.exe -i http://localhost:3000/api/posts/999999 로 실제 HTTP 404를 확인한다.
 
+
+
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study4/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study4/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `lessons/study4/index.html` 전체 코드
 
 ```html
