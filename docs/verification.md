@@ -4,6 +4,8 @@
 
 ## 확인한 흐름
 
+lessons 보완: study6~10·13~14·16~18·Midpoint·Final의 12개 누락 폴더와 study0·11·15 브라우저 진입점을 추가했다. Chromium에서 전체 21개 index.html의 HTTP 200·h1 렌더링·JS 예외 없음, 새 study6 가입/로그인/CRUD, study9 상태 모듈 검사를 확인했다. check 명령은 각 문서와 같은 이름의 lessons 폴더에 index.html이 없으면 실패한다. 터미널 전용 DB·Docker·MCP 검증 한계는 아래 기록을 유지한다.
+
 사용자 흐름: HTML 폼 → fetch/Bearer → Node HTTP → 검증/작성자 권한 → SQLite → JSON/SSE → DOM 텍스트 출력.
 
 | 검증 | 결과 | 근거 |

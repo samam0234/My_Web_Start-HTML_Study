@@ -32,6 +32,8 @@
 
 ## 사용자 요청 21개 문서의 연결
 
+모든 21개 단계에 lessons/study번호/index.html 진입점을 갖췄다. 공통 서버·모듈 구현은 기존 위치에서 재사용하고 각 폴더의 app.js에 단계별 요청·검사 순서를 둔다. lessons/index.html이 실행 목차이며, scripts/create_lesson_entries.py가 추가 진입점을 재생성한다. study0·11·15의 기존 Node 스크립트는 유지하고 브라우저 진입점도 함께 제공한다.
+
 | 파일 | 필수 내용과 실행 근거 |
 |---|---|
 | study0 | 설치·버전·생성·구조·서버·에디터·용어·Git·ignore·env |

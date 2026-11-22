@@ -48,14 +48,18 @@ npm run dev
 
 | URL/명령 | 내용 |
 |---|---|
+| `/lessons/` | study0~18·studyMidpoint·studyFinal 전체 21개 실습 목차 |
 | `/lessons/study1/` ~ `/lessons/study5/` | 독립 기초 예제 |
 | `/lessons/study12/` | UI·상태·폼 라이브러리 실제 연결 |
+
 | `/practice/site/` | 기존 3페이지·메뉴·테마·fetch |
 | `/final-project/` | 기존 정적 Todo·localStorage |
 | `/midpoint/` | 기초 게시판 UI (`npm run midpoint`) |
 | `/workbook/` | 심화 게시판·댓글·문서 AI |
 | `/api-docs` | 심화 서버의 OpenAPI 3 JSON |
 | `npm run mcp:client` | 서버 실행 후 로컬 MCP 검색 도구 연결 |
+
+모든 단계에 `lessons/study번호/index.html` 진입점이 있다. 추가 단계의 `app.js`에는 실제 API·검사·알림 실행 설정을 두고 `lessons/runner.js`에서 요청·오류·출력·취소 처리를 공유한다. 서버/운영 단계는 브라우저 상태 확인과 문서의 터미널 명령을 함께 수행한다. `studyMidpoint`, `studyFinal` 폴더도 같은 규칙을 따른다.
 
 ## 검증·빌드·문서 갱신
 

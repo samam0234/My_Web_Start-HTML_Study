@@ -6,7 +6,9 @@
       "lessons/study0/hello.js",
       ".env.example",
       ".gitignore",
-      "package.json"
+      "package.json",
+      "lessons/study0/index.html",
+      "lessons/study0/app.js"
     ]
   },
   {
@@ -67,7 +69,9 @@
       "server/sqlite.js",
       "server/board.js",
       "practice/site/js/data.js",
-      "practice/site/data/skills.json"
+      "practice/site/data/skills.json",
+      "lessons/study6/index.html",
+      "lessons/study6/app.js"
     ]
   },
   {
@@ -76,7 +80,9 @@
     "sources": [
       "server/auth.js",
       "server/validation.js",
-      "server/basic.js"
+      "server/basic.js",
+      "lessons/study7/index.html",
+      "lessons/study7/app.js"
     ]
   },
   {
@@ -86,7 +92,10 @@
       "workbook/js/api.js",
       "workbook/js/forms.js",
       "server/index.js",
-      ".env.example"
+      ".env.example",
+      "lessons/study8/index.html",
+      "lessons/study8/app.js",
+      "lessons/runner.js"
     ]
   },
   {
@@ -94,7 +103,9 @@
     "title": "테스트·디버깅",
     "sources": [
       "tests/core.test.js",
-      "tests/api.test.js"
+      "tests/api.test.js",
+      "lessons/study9/index.html",
+      "lessons/study9/app.js"
     ]
   },
   {
@@ -103,7 +114,9 @@
     "sources": [
       "scripts/build.js",
       "ops/Caddyfile",
-      "scripts/backup.js"
+      "scripts/backup.js",
+      "lessons/study10/index.html",
+      "lessons/study10/app.js"
     ]
   },
   {
@@ -118,7 +131,9 @@
       "server/validation.js",
       "server/board.js",
       "server/errors.js",
-      "server/static.js"
+      "server/static.js",
+      "lessons/studyMidpoint/index.html",
+      "lessons/studyMidpoint/app.js"
     ]
   },
   {
@@ -128,7 +143,9 @@
       "server/repository.js",
       "lessons/study11/orm.js",
       "scripts/check-databases.js",
-      "compose.yaml"
+      "compose.yaml",
+      "lessons/study11/index.html",
+      "lessons/study11/app.js"
     ]
   },
   {
@@ -149,7 +166,9 @@
     "title": "외부 서비스: 메일·결제·업로드·OAuth",
     "sources": [
       "server/integrations.js",
-      "workbook/js/file-worker.js"
+      "workbook/js/file-worker.js",
+      "lessons/study13/index.html",
+      "lessons/study13/app.js"
     ]
   },
   {
@@ -157,7 +176,9 @@
     "title": "REST·OpenAPI·버전·페이지네이션",
     "sources": [
       "server/openapi.js",
-      "server/errors.js"
+      "server/errors.js",
+      "lessons/study14/index.html",
+      "lessons/study14/app.js"
     ]
   },
   {
@@ -166,7 +187,9 @@
     "sources": [
       "server/static.js",
       "lessons/study15/measure.js",
-      "server/integrations.js"
+      "server/integrations.js",
+      "lessons/study15/index.html",
+      "lessons/study15/app.js"
     ]
   },
   {
@@ -179,7 +202,9 @@
       ".github/workflows/ci.yml",
       "ops/compose.production.yaml",
       "scripts/backup.js",
-      "scripts/restore.js"
+      "scripts/restore.js",
+      "lessons/study16/index.html",
+      "lessons/study16/app.js"
     ]
   },
   {
@@ -188,7 +213,9 @@
     "sources": [
       "server/realtime.js",
       "workbook/js/realtime.js",
-      "workbook/js/file-worker.js"
+      "workbook/js/file-worker.js",
+      "lessons/study17/index.html",
+      "lessons/study17/app.js"
     ]
   },
   {
@@ -198,7 +225,9 @@
       "server/ai.js",
       "workbook/js/sse.js",
       "mcp/server.js",
-      "mcp/client.js"
+      "mcp/client.js",
+      "lessons/study18/index.html",
+      "lessons/study18/app.js"
     ]
   },
   {
@@ -230,7 +259,10 @@
       "mcp/client.js",
       "Dockerfile",
       "ops/compose.production.yaml",
-      ".github/workflows/ci.yml"
+      ".github/workflows/ci.yml",
+      "lessons/studyFinal/index.html",
+      "lessons/studyFinal/app.js",
+      "lessons/runner.js"
     ]
   }
 ]
