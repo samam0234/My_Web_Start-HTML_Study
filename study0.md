@@ -62,6 +62,10 @@ docs/          요구사항 추적·검증 기록·노션 원문
 ```
 
 
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study0/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study0/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `lessons/study0/hello.js` 전체 코드
 
 ```javascript
@@ -282,6 +286,81 @@ __pycache__/
 | 42 | 설정/데이터 필드 playwright의 값을 정의한다. |
 | 43 | 설정/데이터 필드 }의 값을 정의한다. |
 | 44 | 설정/데이터 필드 }의 값을 정의한다. |
+
+
+### `lessons/study0/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>study0 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/study0/index.html](lessons/study0/index.html) · SHA-256(LF 정규화): `6aa254f9c30c78a54de986c8c013493907f1df3d8dc86f2b9cfccdab1bcf90b3`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/study0/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "study0 · 환경 확인",
+  "intro": "npm run dev로 실행한 서버의 /health를 확인합니다. Node 버전은 터미널에서 node lessons/study0/hello.js로 확인하세요.",
+  "input": {},
+  "actions": [
+    {
+      "label": "서버 상태",
+      "kind": "health"
+    }
+  ],
+  "links": [
+    [
+      "전체 게시판·문서 AI",
+      "/workbook/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/study0/app.js](lessons/study0/app.js) · SHA-256(LF 정규화): `a3b035368b72e7f5bb77695832c24d6c15428f51b97d5b3487112f47d27b824e`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "study0 · 환경 확인",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "npm run dev로 실행한 서버의 /health를 확인합니다. Node 버전은 터미널에서 node lessons/study0/hello.js로 확인하세요.",` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {},` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "서버 상태",` |
+| 11 | 현재 처리의 설정·호출·상태를 연결한다: `"kind": "health"` |
+| 12 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 13 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 14 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 16 | 현재 처리의 설정·호출·상태를 연결한다: `"전체 게시판·문서 AI",` |
+| 17 | 현재 처리의 설정·호출·상태를 연결한다: `"/workbook/"` |
+| 18 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 19 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 20 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
