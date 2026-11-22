@@ -32,6 +32,10 @@ catch { $_.ErrorDetails.Message }
 `/api/validate`는 study5용 별도 검증 엔드포인트다. 기본 게시판의 필수 필드·길이 오류는 노션 공통 스펙에 맞춰 400으로 응답한다.
 
 
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study5/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study5/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `lessons/study5/index.html` 전체 코드
 
 ```html
