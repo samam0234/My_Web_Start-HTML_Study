@@ -25,6 +25,12 @@ OpenAPI는 양쪽이 함께 읽는 주문서 사전이고 버전은 그 사전�
 3. /api/posts?page=1&limit=2&sort=-createdAt&q=HTML을 요청한다.
 4. 400·401·403·404·409·413·429 응답을 테스트와 대조한다.
 
+
+
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study14/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study14/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `server/openapi.js` 전체 코드
 
 ```javascript
@@ -273,6 +279,97 @@ export async function readJson(req, limit = 64 * 1024) {
 | 35 | 계산·선택한 결과를 호출한 쪽에 돌려주고 현재 함수를 끝낸다. |
 | 36 | 실패를 잡아 공통 오류 또는 복구 상태로 바꾼다. |
 | 37 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+
+
+### `lessons/study14/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>study14 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/study14/index.html](lessons/study14/index.html) · SHA-256(LF 정규화): `52b7c12838db379e3078f0a97ed73307795448049e8fe5034fdc64b3db49bcbd`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/study14/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "study14 · OpenAPI·페이지네이션",
+  "intro": "OpenAPI 3 문서와 page=1·limit=2 목록의 meta를 대조하세요. 잘못된 정렬은 400 오류를 반환합니다.",
+  "input": {},
+  "actions": [
+    {
+      "label": "OpenAPI 읽기",
+      "kind": "schema"
+    },
+    {
+      "label": "2개씩 목록",
+      "path": "/posts?page=1&limit=2"
+    },
+    {
+      "label": "잘못된 정렬",
+      "path": "/posts?sort=invalid"
+    }
+  ],
+  "links": [
+    [
+      "전체 게시판·문서 AI",
+      "/workbook/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/study14/app.js](lessons/study14/app.js) · SHA-256(LF 정규화): `1f2a7ea3bf202527285285e98e968bf9e0ddf57199b25e8aa83ffcae9b529f9c`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "study14 · OpenAPI·페이지네이션",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "OpenAPI 3 문서와 page=1·limit=2 목록의 meta를 대조하세요. 잘못된 정렬은 400 오류를 반환합니다.",` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {},` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "OpenAPI 읽기",` |
+| 11 | 현재 처리의 설정·호출·상태를 연결한다: `"kind": "schema"` |
+| 12 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 13 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 14 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "2개씩 목록",` |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/posts?page=1&limit=2"` |
+| 16 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 17 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 18 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "잘못된 정렬",` |
+| 19 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/posts?sort=invalid"` |
+| 20 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 21 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 22 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 23 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 24 | 현재 처리의 설정·호출·상태를 연결한다: `"전체 게시판·문서 AI",` |
+| 25 | 현재 처리의 설정·호출·상태를 연결한다: `"/workbook/"` |
+| 26 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 27 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 28 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
