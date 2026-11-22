@@ -53,6 +53,10 @@ Ollama를 설치·실행한 뒤 `ollama --version`과 `ollama list`로 확인한
 
 공식 기술 근거: [Ollama Chat API](https://docs.ollama.com/api/chat), [MCP 서버](https://modelcontextprotocol.io/docs/develop/build-server), [AI SDK](https://ai-sdk.dev/docs/ai-sdk-core/generating-text). 현재 설치된 AI SDK 7.0.179의 node_modules 문서를 확인하여 textStream과 usage를 사용한다. MCP SDK 1.32.2의 stdio 서버·클라이언트를 실제 핸드셰이크 테스트했다.
 
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study18/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study18/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `server/ai.js` 전체 코드
 
 ```javascript
@@ -312,6 +316,153 @@ try {
 | 9 | 객체를 JSON 문자열로 바꿔 저장·전송·관찰한다. |
 | 10 | 객체를 JSON 문자열로 바꿔 저장·전송·관찰한다. |
 | 11 | 성공·실패와 관계없이 버튼·연결·자원을 정리한다. |
+
+
+### `lessons/study18/index.html` 전체 코드
+
+```html
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>study18 실습</title><link rel="stylesheet" href="/workbook/style.css"></head>
+<body><main class="container"></main><script type="module" src="app.js"></script></body>
+</html>
+```
+
+원본: [lessons/study18/index.html](lessons/study18/index.html) · SHA-256(LF 정규화): `1111d33ff65eb6f94f60f4b4305efeef9f007eb79409bb9e6a2a57e64a9c54f3`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | HTML 표준 모드로 문서를 해석하도록 선언한다. |
+| 2 | 문서 언어/루트를 정의한다. |
+| 3 | 메타정보 / 문자 인코딩·화면 배율·설명 / 브라우저 탭 제목 / 공통 CSS 연결를 정의한다. |
+| 4 | body 요소 / 본문 / ESM 진입점 연결를 정의한다. |
+| 5 | 현재 HTML 요소를 닫는다. |
+
+
+### `lessons/study18/app.js` 전체 코드
+
+```javascript
+import { mountLesson } from '../runner.js';
+
+// 이 단계의 요청·입력·실행 순서를 선언한다.
+mountLesson({
+  "title": "study18 · 문서 AI·SSE",
+  "intro": "가입·로그인→문서 저장→질문 순서로 실행하세요. 기본값은 mock입니다. MCP 실습은 npm run mcp:client로 실행합니다.",
+  "input": {
+    "email": "lesson@example.com",
+    "password": "lesson-password-123",
+    "nickname": "학습자",
+    "filename": "lesson.md",
+    "text": "HTML은 문서의 구조입니다. CSS는 표현입니다.",
+    "question": "HTML"
+  },
+  "actions": [
+    {
+      "label": "회원가입",
+      "path": "/auth/signup",
+      "method": "POST",
+      "fields": [
+        "email",
+        "password",
+        "nickname"
+      ]
+    },
+    {
+      "label": "로그인",
+      "path": "/auth/login",
+      "method": "POST",
+      "fields": [
+        "email",
+        "password"
+      ]
+    },
+    {
+      "label": "문서 저장",
+      "path": "/documents",
+      "method": "POST",
+      "fields": [
+        "filename",
+        "text"
+      ]
+    },
+    {
+      "label": "스트리밍 질문",
+      "path": "/ai/chat/stream",
+      "stream": true
+    }
+  ],
+  "links": [
+    [
+      "전체 게시판·문서 AI",
+      "/workbook/"
+    ]
+  ]
+});
+```
+
+원본: [lessons/study18/app.js](lessons/study18/app.js) · SHA-256(LF 정규화): `2459ac428af8bd6df36c00b734002f0862411c0a34babccade8fb583e471c27f`
+
+줄 번호는 위 코드의 첫 줄을 1로 센다. 빈 줄은 설명에서 생략한다.
+
+| 줄 | 설명 |
+|---|---|
+| 1 | 필요한 함수·클래스만 모듈에서 가져와 이 파일의 의존성을 선언한다. |
+| 3 | 이 단계의 요청·입력·실행 순서를 선언한다. |
+| 4 | 현재 처리의 설정·호출·상태를 연결한다: `mountLesson({` |
+| 5 | 현재 처리의 설정·호출·상태를 연결한다: `"title": "study18 · 문서 AI·SSE",` |
+| 6 | 현재 처리의 설정·호출·상태를 연결한다: `"intro": "가입·로그인→문서 저장→질문 순서로 실행하세요. 기본값은 mock입니다. MCP 실습은 npm run mcp:client로 실행합니다.",` |
+| 7 | 현재 처리의 설정·호출·상태를 연결한다: `"input": {` |
+| 8 | 현재 처리의 설정·호출·상태를 연결한다: `"email": "lesson@example.com",` |
+| 9 | 현재 처리의 설정·호출·상태를 연결한다: `"password": "lesson-password-123",` |
+| 10 | 현재 처리의 설정·호출·상태를 연결한다: `"nickname": "학습자",` |
+| 11 | 현재 처리의 설정·호출·상태를 연결한다: `"filename": "lesson.md",` |
+| 12 | 현재 처리의 설정·호출·상태를 연결한다: `"text": "HTML은 문서의 구조입니다. CSS는 표현입니다.",` |
+| 13 | 현재 처리의 설정·호출·상태를 연결한다: `"question": "HTML"` |
+| 14 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 15 | 현재 처리의 설정·호출·상태를 연결한다: `"actions": [` |
+| 16 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 17 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "회원가입",` |
+| 18 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/auth/signup",` |
+| 19 | 현재 처리의 설정·호출·상태를 연결한다: `"method": "POST",` |
+| 20 | 현재 처리의 설정·호출·상태를 연결한다: `"fields": [` |
+| 21 | 현재 처리의 설정·호출·상태를 연결한다: `"email",` |
+| 22 | 현재 처리의 설정·호출·상태를 연결한다: `"password",` |
+| 23 | 현재 처리의 설정·호출·상태를 연결한다: `"nickname"` |
+| 24 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 25 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 26 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 27 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "로그인",` |
+| 28 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/auth/login",` |
+| 29 | 현재 처리의 설정·호출·상태를 연결한다: `"method": "POST",` |
+| 30 | 현재 처리의 설정·호출·상태를 연결한다: `"fields": [` |
+| 31 | 현재 처리의 설정·호출·상태를 연결한다: `"email",` |
+| 32 | 현재 처리의 설정·호출·상태를 연결한다: `"password"` |
+| 33 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 34 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 35 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 36 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "문서 저장",` |
+| 37 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/documents",` |
+| 38 | 현재 처리의 설정·호출·상태를 연결한다: `"method": "POST",` |
+| 39 | 현재 처리의 설정·호출·상태를 연결한다: `"fields": [` |
+| 40 | 현재 처리의 설정·호출·상태를 연결한다: `"filename",` |
+| 41 | 현재 처리의 설정·호출·상태를 연결한다: `"text"` |
+| 42 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 43 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 44 | 현재 처리의 설정·호출·상태를 연결한다: `{` |
+| 45 | 현재 처리의 설정·호출·상태를 연결한다: `"label": "스트리밍 질문",` |
+| 46 | 현재 처리의 설정·호출·상태를 연결한다: `"path": "/ai/chat/stream",` |
+| 47 | 현재 처리의 설정·호출·상태를 연결한다: `"stream": true` |
+| 48 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 49 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 50 | 현재 처리의 설정·호출·상태를 연결한다: `"links": [` |
+| 51 | 현재 처리의 설정·호출·상태를 연결한다: `[` |
+| 52 | 현재 처리의 설정·호출·상태를 연결한다: `"전체 게시판·문서 AI",` |
+| 53 | 현재 처리의 설정·호출·상태를 연결한다: `"/workbook/"` |
+| 54 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 55 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
+| 56 | 현재 함수·콜백·객체·조건 블록을 닫는다. |
 
 
 ## ④ 🔗 연동 포인트
