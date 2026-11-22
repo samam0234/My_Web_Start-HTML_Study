@@ -23,6 +23,12 @@
 3. card.js에서 텍스트 표현을 바꾼 뒤 모든 카드에 같은 변화가 적용되는지 확인한다.
 4. 기존 practice/site/js/main.js의 네 초기화 함수가 페이지별 없는 요소를 어떻게 처리하는지 읽는다.
 
+
+
+### 단계별 실행 위치
+
+`npm run dev` 후 `/lessons/study2/`에서 이 단계의 실습을 연다. [실습 HTML](lessons/study2/index.html)과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.
+
 ### `lessons/study2/card.js` 전체 코드
 
 ```javascript
