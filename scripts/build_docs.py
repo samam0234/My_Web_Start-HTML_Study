@@ -489,6 +489,11 @@ def main():
             item['extra'] += '\n\n공식 기술 근거: [node-postgres 매개변수 질의](https://node-postgres.com/features/queries), [MariaDB Promise API](https://mariadb.com/docs/connectors/mariadb-connector-nodejs/connector-nodejs-promise-api).'
     manifest = []
     for index,item in enumerate(CHAPTERS):
+        entry = f'lessons/study{item["number"]}/index.html'
+        item['extra'] += f'\n\n### 단계별 실행 위치\n\n`npm run dev` 후 `/lessons/study{item["number"]}/`에서 이 단계의 실습을 연다. [실습 HTML]({entry})과 [전체 실습 목차](lessons/index.html)를 사용한다. 기초 중간 프로젝트 전체 화면은 `npm run midpoint` 후 `/midpoint/`에서 실행한다. 터미널 전용 DB·Docker·MCP 명령은 해당 문서의 실행 순서를 따른다.'
+        for path in [entry, f'lessons/study{item["number"]}/app.js']:
+            if (ROOT / path).exists() and path not in item['files']: item['files'].append(path)
+        if item['number'] in ['8', 'Final']: item['files'].append('lessons/runner.js')
         (ROOT / filename(item['number'])).write_text(render(item,index),encoding='utf-8')
         manifest.append({ 'file':filename(item['number']), 'title':item['title'], 'sources':item['files'] })
     (ROOT / 'docs/chapter-manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')

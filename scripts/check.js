@@ -26,6 +26,8 @@ assert.equal(manifest.length, 21);
 const expected = [...Array.from({ length: 19 }, (_, i) => `study${i}.md`), 'studyMidpoint.md', 'studyFinal.md'].sort();
 assert.deepEqual(manifest.map(chapter => chapter.file).sort(), expected);
 for (const chapter of manifest) {
+  const lesson = `lessons/${chapter.file.replace('.md', '')}`;
+  await readFile(`${lesson}/index.html`).catch(() => { throw new Error(`${lesson}: 실행 진입점 누락`); });
   const markdown = (await readFile(chapter.file, 'utf8')).replace(/\r\n/g, '\n');
   for (const heading of ['① 목표 한 줄', '② 📖 이론', '③ 🛠️ 실기', '④ 🔗 연동 포인트', '⑤ 오류 노트', '⑥ 직접 해보기', '⑦ ☐ 체크리스트', '⑧ 다음 단계 연결']) assert.ok(markdown.includes(`## ${heading}`), `${chapter.file}: ${heading} 누락`);
   assert.ok(markdown.includes('### 비유로 이해하기'));

@@ -83,6 +83,25 @@ try {
   await page.getByRole('button', { name: '서버 검사', exact: true }).click();
   await page.getByText('입력 검사를 통과했습니다.', { exact: true }).waitFor();
   assert.match(await page.locator('#demo-count').innerText(), /1회/);
+  const lessonNames = [...Array.from({ length: 19 }, (_, i) => `study${i}`), 'studyMidpoint', 'studyFinal'];
+  for (const name of lessonNames) {
+    const response = await page.goto(`${base}/lessons/${name}/`);
+    assert.equal(response.status(), 200, `${name} 진입점`);
+    await page.locator('h1').waitFor();
+  }
+  await page.goto(`${base}/lessons/study9/`);
+  await page.getByRole('button', { name: '단위 검사 실행' }).click();
+  await page.waitForFunction(() => document.querySelector('#output').textContent.includes('구독 해제'));
+  await page.goto(`${base}/lessons/study6/`);
+  await page.getByRole('button', { name: '회원가입', exact: true }).click();
+  await page.waitForFunction(() => document.querySelector('#output').textContent.includes('학습자'));
+  await page.getByRole('button', { name: '로그인', exact: true }).click();
+  await page.waitForFunction(() => document.querySelector('#output').textContent.includes('이 탭 메모리'));
+  for (const name of ['등록', '상세', '수정', '삭제']) {
+    await page.getByRole('button', { name, exact: true }).click();
+    await page.waitForFunction(() => !document.querySelector('.actions button').disabled);
+    assert.ok(!/^(400|401|403|404|500)/.test(await page.locator('#output').innerText()), name);
+  }
   assert.deepEqual(errors, []);
   const result = { browser: 'Chromium', desktop: '1280x900', mobile: '390x844', flow: ['회원가입', '로그인', '게시글 CRUD', '댓글', 'XSS 텍스트 출력', 'Worker 업로드', 'SSE 모의 AI', '질문 기록', '테마 저장', 'Todo 손상값 복구'], pageErrors: errors };
   await writeFile('artifacts/browser-result.json', JSON.stringify(result, null, 2));
